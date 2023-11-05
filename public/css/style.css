@@ -1,0 +1,120 @@
+body {
+    font-family: 'Nunito',sans-serif;
+}
+nav a {
+    padding: .8rem;
+}
+
+li {
+    list-style-type: none;
+    border:1px solid;
+    border-radius:5px;
+    background: antiquewhite;
+    padding:10px;
+    margin:5px;
+}
+li :hover
+{
+    background: #f7474f;
+}
+form {
+    background: white;
+    border:1px solide #dddddd;
+    padding:25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #0000000f;
+}
+form div {
+    margin: 10px;
+}
+form input {
+    border: 1px solid #ddd ;
+    border-radius: 5px;
+    padding: 10px;
+    font-size:.9rem;
+    font-family:'Nunito';
+}
+form label
+{
+    display: inherit;
+    font-size: .9rem;
+    padding-bottom:3px;
+    color: #9d9d9d;
+}
+form button
+{
+    border: 1px solid #ddd;
+    padding:10px 25px;
+    font-size:  1.1rem;
+    margin:10px 0;
+    border-radius: 5px;
+}
+/* Reset some default styles */
+body, h1, h2, p, button {
+    margin: 0;
+    padding: 0;
+}
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #007BFF;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+.product-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 280px;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.product h2 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+.product p {
+    margin: 10px 0;
+    font-size: 0.9rem;
+}
+
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #007BFF;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
