@@ -18,3 +18,4 @@
 <link rel="stylesheet" href="artisan/assets/css/style.css">
 <!-- End layout styles -->
 <link rel="shortcut icon" href="artisan/assets/images/favicon.png" />
+

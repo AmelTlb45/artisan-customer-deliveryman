@@ -38,8 +38,5 @@ class HomeController extends Controller
         { return view('users.customers.home');}
         if($role == 'deliveryman')
         { return view('users.deliverymans.home');}
-
-
-
     }
 }

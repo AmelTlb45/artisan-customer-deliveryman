@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -16,9 +17,27 @@ class ArtisanController extends Controller
      * Display a listing of the resource.
      */
 
+     public function view_category()
+    {
+        $data=Category::all();
+        return view('users.artisans.category',compact('data'));
+    }
+    public function view_product()
+    {
+        $data=Product::all();
+        return view('users.artisans.product',compact('data'));
+    }
+
+    public function add_category(Request $request)
+    {
+        $data = new Category;
+        $data->name_category=$request->name_category;
+        $data->save();
+        return redirect()->back()->with('message', 'category add ! ');
+    }
     public function index()
     {
-        $data = User::where('role','eleve')->get();
+        //$data = User::where('role','artisan')->get();
         return view('artisan.index',compact('data'));
     }
 
@@ -49,7 +68,7 @@ class ArtisanController extends Controller
             'product_type' => 'required|in:Sugar,Salt,Both', // Specify whether they sell sugar, salt, or both
         ]);
 
-        $data = User::create($request->all());
+        //$data = User::create($request->all());
         return redirect()->route('artisans.index')->with('success','élève créé avec succès.');
     }
 
@@ -58,7 +77,7 @@ class ArtisanController extends Controller
      */
     public function show(string $id)
     {
-        $data = User::find($id);
+        //$data = User::find($id);
         return view('artisans.show',compact('data'));
     }
 
@@ -67,7 +86,7 @@ class ArtisanController extends Controller
      */
     public function edit(string $id)
     {
-        $data = User::find($id);
+        //$data = User::find($id);
         return view('artisans.edit',compact('data'));
     }
 
@@ -76,7 +95,7 @@ class ArtisanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $user = User::find($id);
+        //$user = User::find($id);
         $request->validate([
             'Nom' => 'required|string', // Artisan's name
             'Prenom' => 'required|string', // Artisan's last name
@@ -90,10 +109,10 @@ class ArtisanController extends Controller
             'product_type' => 'required|in:sugar,salt,both', // Specify whether they sell sugar, salt, or both
         ]);
         if ($request->has('password')) {
-            $user->password = Hash::make($request->password);
-            $user->save();
+          //  $user->password = Hash::make($request->password);
+            //$user->save();
         }
-        $user->update($request->all());
+        //$user->update($request->all());
         return redirect()->route('artisans.index')->with('success','élève modifier avec succès.');
 
     }
@@ -104,8 +123,15 @@ class ArtisanController extends Controller
 
     public function destroy(string $id)
     {
-        $data = User::findOrFail($id);
-        $data->delete();
+        //$data = User::findOrFail($id);
+       // $data->delete();
         return redirect()->back()->with('success', 'élève a été supprimer avec succès');
+    }
+
+    public function delet_category($id){
+ $data=Category::find($id);
+ $data->delete();
+ return redirect()->back()->with('message','cetegory deleted successfuly');
+
     }
 }

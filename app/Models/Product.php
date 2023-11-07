@@ -11,15 +11,17 @@ class Product extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
+    protected $dates = ['deleted_at'];
     protected $fillable = [
-        'name',
-        'description',
-        'quantity',
-        'price',
+        'title',
+        'name_category_id',
         'image',
-        'category_id'
+        'price',
+        'quantity',
+        'description',
     ];
+
+
 
     public function category(): BelongsTo
     {
