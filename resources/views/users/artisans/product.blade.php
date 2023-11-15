@@ -138,12 +138,12 @@ input.input{
                     <div class="product-form">
 
                       <div class="row mb-3 ">
-                        <label for="title" class="col-md-4 col-form-label text-md-end">{{ __('Title') }}</label>
+                        <label for="name_prod" class="col-md-4 col-form-label text-md-end">{{ __('Name Product ') }}</label>
 
                         <div class="col-md-6 custom-checkbox mb-3">
-                            <input  class="input"id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" required autocomplete="title" autofocus>
+                            <input  class="input"id="name_prod" type="text" class="form-control @error('name_prod') is-invalid @enderror" name="name_prod" value="{{ old('name_prod') }}" required autocomplete="name_prod" autofocus>
 
-                            @error('title')
+                            @error('name_prod')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -153,11 +153,10 @@ input.input{
                         </div>
 
                     <div class="row mb-3">
-                        <label for="image"
-                            class="col-md-4 col-form-label text-md-end">{{ __('Photo') }}</label>
+                        <label for="image" class="col-md-4 col-form-label text-md-end">{{ __('Image') }}</label>
                         <div class="col-md-6">
                             <input id="image" type="file"
-                                class="form-control @error('photo') is-invalid @enderror" name="image"
+                                class="form-control @error('image') is-invalid @enderror" name="image"
                                 autocomplete="image">
                             @error('image')
                                 <span class="invalid-feedback" role="alert">
@@ -167,8 +166,7 @@ input.input{
                         </div>
                     </div>
 
-                      <div class="row mb-3">
-                        <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('Price') }}</label>
+                      <div class                        <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('Price') }}</label>
 
                         <div class="col-md-6">
                             <input  class="input" id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus>
@@ -181,12 +179,12 @@ input.input{
                         </div>
                     </div>
                       <div class="row mb-3">
-                        <label for="quantity" class="col-md-4 col-form-label text-md-end">{{ __('Quantity') }}</label>
+                        <label for="quantity_min" class="col-md-4 col-form-label text-md-end">{{ __('Quantity Min') }}</label>
 
                         <div class="col-md-6">
-                            <input id="quantity" class="input" type="number" class="form-control @error('quantity') is-invalid @enderror" name="quantity" value="{{ old('quantity') }}" required autocomplete="name_category" autofocus>
+                            <input id="quantity_min" class="input" type="number" class="form-control @error('quantity_min') is-invalid @enderror" name="quantity_min" value="{{ old('quantity_min') }}" required autocomplete="quantity_min" autofocus>
 
-                            @error('quantity')
+                            @error('quantity_min')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -203,21 +201,21 @@ input.input{
 
 
                           <div class="mt-2">
-                            <label for="sugare" class="inline-flex items-left">
+                            <label for="name_category" class="inline-flex items-left">
                                 <input type="radio" id="sugare" name="name_category" value="sugare" {{ old('name_category') == 'sugare' ? 'checked' : '' }} required autofocus autocomplete="name_category" class="form-radio">
                                 <span class="ml-2">{{ __('Sugare') }}</span>
                             </label>
                         </div>
 
                         <div class="mt-2">
-                            <label for="salt" class="inline-flex items-left">
+                            <label for="name_category" class="inline-flex items-left">
                                 <input type="radio" id="salt" name="name_category" value="salt" {{ old('name_category') == 'salt' ? 'checked' : '' }} required autofocus autocomplete="name_category" class="form-radio">
                                 <span class="ml-2">{{ __('Salt') }}</span>
                             </label>
                         </div>
 
                         <div class="mt-2">
-                            <label for="both" class="inline-flex items-left">
+                            <label for="name_category" class="inline-flex items-left">
                                 <input type="radio" id="both" name="name_category" value="name_category" {{ old('name_category') == 'both' ? 'checked' : '' }} required autofocus autocomplete="name_category" class="form-radio">
                                 <span class="ml-2">{{ __('Both') }}</span>
                             </label>
