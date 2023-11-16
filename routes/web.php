@@ -52,6 +52,6 @@ Route::get('/view_category',[ArtisanController::class,'view_category']);
 Route::post('/add_category',[ArtisanController::class,'add_category']);
 Route::get('/delete_category/{id}',[ArtisanController::class,'delet_category']);
 Route::get('/view_product',[ArtisanController::class,'view_product']);
-Route::get('/add_product',[ArtisanController::class,'add_product']);
+Route::post('/add_product',[ArtisanController::class,'add_product']);
 
 

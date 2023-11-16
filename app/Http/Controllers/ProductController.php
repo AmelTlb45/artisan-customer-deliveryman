@@ -3,83 +3,96 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ProductRequest;
-use App\Models\Category;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 use App\Models\Product;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {  $products = Product::all();
-      //  $products = Product::query()->with('category')->paginate(10);
-        return view('users.artisans.products.index',['products' => $products]);
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $product = new Product();
-        $categories = Category::all();
-        $product->fill([
-            'quantity' => 0,
-            'price' => 0,
-        ]);
-        $isUpdate = false;
-        return view('users.artisans.products.form', compact(
-            'product', 'isUpdate', 'categories'
-        ));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(ProductRequest $request)
-    {
-        $formFields = $request->validated();
-        if ($request->hasFile('image')) {
-            $formFields['image'] = $request->file('image')->store('product', 'public');
+        public function index()
+        {
+            $salles = Product::get();
+            return view('salles.index', compact('salles'));
         }
 
-        Product::create($formFields);
 
-        return to_route('users.artisans.products.index')->with('success', 'Product created successfully');
-    }
+        /**
+         * Show the form for creating a new resource.
+         */
+        public function create()
+        {
+            return view('salles.create');
+        }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Product $product)
-    {
-        $products = Product::all(); // Replace this with your actual code to retrieve products.
+        /**
+         * Store a newly created resource in storage.
+         */
+        public function store(Request $request)
+        {
+            $request->validate([
+                // ????
+                // c bon j'ai compr
+                'Num_Salle' => 'required|string|unique:salles',
+            'Capacite' => 'required|integer',
+            ]);
 
-       return view('users.artisans.products.index', ['products' => $products]);
-    }
+            $salle = new Product();
+            $salle->Num_Salle = $request->input('Num_Salle');
+            $salle->Capacite = $request->input('Capacite');
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Product $product)
-    {
-        $isUpdate = true;
-        $categories = Category::all();
-        return view('users.artisans.products.form', compact(
-            'product', 'isUpdate', 'categories'
-        ));
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(ProductRequest $request, Product $product)
-    {
-        $product->fill($request->validated())->save();
-        return to_route('users.artisans.products.index')->with('success', 'Product updated successfully');
-    }
+            $salle->save();
+
+
+
+            return Redirect::route('salles.index')->with('success', 'Salles created successfully.');
+
+        }
+
+        /**
+         * Display the specified resource.
+         */
+        public function show(int $id)
+        {
+            $salle = Product::find($id);
+            return view('salles.show', compact('salle'));
+        }
+
+
+        /**
+         * Show the form for editing the specified resource.
+         */
+        public function edit(int $id)
+        {
+            $salle = Product::find($id);
+            if (!$salle) {
+                return redirect()->route('salles.index')->with('error', 'Salle not found.');
+            }
+
+            return view('salles.edit', compact('salle'));
+        }
+
+
+        /**
+         * Update the specified resource in storage.
+         */
+        public function update(Request $request, int $id)
+        {
+            $user = Product::find($id);
+            $request->validate([
+
+                'Num_Salle' => 'required|string',
+                'Capacite' => 'required|integer',
+
+            ]);
+
+            $user->update($request->all());
+            return redirect()->route('salles.index')->with('success', 'Salles modifier avec succès.');
+        }
+        /**
+         * Remove the specified resource from storage.
+         */
 
     /**
      * Remove the specified resource from storage.

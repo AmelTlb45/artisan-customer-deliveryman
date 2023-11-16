@@ -135,6 +135,7 @@ input.input{
             <div class="content-wrapper">
                 <div class="div-center">
                     <h1>Add Products</h1>
+                    <form >
                     <div class="product-form">
 
                       <div class="row mb-3 ">
@@ -149,8 +150,8 @@ input.input{
                                 </span>
                             @enderror
 
+                       </div>
                     </div>
-                        </div>
 
                     <div class="row mb-3">
                         <label for="image" class="col-md-4 col-form-label text-md-end">{{ __('Image') }}</label>
@@ -166,7 +167,8 @@ input.input{
                         </div>
                     </div>
 
-                      <div class                        <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('Price') }}</label>
+                    <div class="row mb-3">
+                         <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('Price') }}</label>
 
                         <div class="col-md-6">
                             <input  class="input" id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus>
@@ -196,7 +198,7 @@ input.input{
                       <div class="row mb-3 ">
                         <label for="name_category" class="col-md-4 col-form-label text-md-end">{{ __('Category') }}</label>
 
-                        <div class="col-md-3">
+                        <div class="col-md-6">
 
 
 
@@ -216,7 +218,7 @@ input.input{
 
                         <div class="mt-2">
                             <label for="name_category" class="inline-flex items-left">
-                                <input type="radio" id="both" name="name_category" value="name_category" {{ old('name_category') == 'both' ? 'checked' : '' }} required autofocus autocomplete="name_category" class="form-radio">
+                                <input type="radio" id="both" name="name_category" value="both" {{ old('name_category') == 'both' ? 'checked' : '' }} required autofocus autocomplete="name_category" class="form-radio">
                                 <span class="ml-2">{{ __('Both') }}</span>
                             </label>
                         </div>
@@ -224,7 +226,7 @@ input.input{
 
                     </div>
 
-                      </div>
+             </div>
 
                       <div class="form-group">
                         <label for="description" class="inline-flex items-left">{{ __('Description') }}</label>
@@ -238,6 +240,7 @@ input.input{
                             </button>
                         </div>
                     </div>
+                </form>
                 </div>
             </div>
         </div>
