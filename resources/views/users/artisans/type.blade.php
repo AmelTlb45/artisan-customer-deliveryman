@@ -4,10 +4,7 @@
  @include('users.artisans.css')
   </head>
   <style>
-    .input
-    {
-      color: #2a2120;
-    }
+
     .main-panel {
         background-color: #20232a; /* Dark background color */
         color: #ffffff; /* Light text color */
@@ -130,36 +127,57 @@
               </div>
                 @endif
             <div class="div_center">
-                <h2 class="h2_font">Add Category</h2>
-               <form action="{{ url('/add_category') }}" method="POST">
+                <h2 class="h2_font">Add Types</h2>
+               <form action="{{ url('/add_type') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input class="modern-input" type="text" name="name_category" placeholder="Write a category...">
+                <div class="row mb-3">
+                <label for="neme_type" class="col-md-4 col-form-label text-md-end">{{ __('Type') }}</label>
+                <input class="modern-input" type="text" name="name_type" placeholder="Write a Type...">
+                    <label for="name_category" class="col-md-4 col-form-label text-md-end">{{ __('Category') }}</label>
+                    <select name="category_id" required>
+                        <option value="" >---Enter Category ---</option>
 
-                <input class="modern-input" type="number" name="nbr_prod" placeholder="Number products ...">
-                <input type="submit" class="modern-button" name="submit" value="add_category">
-
+                        @foreach ($categories  as $category )
+                        <option value="{{ $category->id }}" {{ isset($data) && $data->category_id == $category->id ? 'selected' : '' }}>
+                            {{ $category->name_category }}
+                        </option>
+                                        @endforeach</select>
+                    </select>
+                </div>
+                <input type="submit" class="modern-button" name="submit" value="add_type">
                </form>
+               @if ($errors->any())
+               <div class="alert alert-danger">
+                   <ul>
+                       @foreach ($errors->all() as $error)
+                           <li>{{ $error }}</li>
+                       @endforeach
+                   </ul>
+               </div>
+           @endif
 
             </div>
 
             <table class="modern-table" class="center">
                 <thead>
                   <tr>
+                    <th>Type Name</th>
                     <th>Category Name</th>
-                    <th>Product Number</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($data as $item)
-                  <tr>
-                    <td>{{ $item->name_category }}</td>
-                    <td>{{ $item->nbr_prod}}</td>
-                    <td>
-                      <a class="btn btn-danger" href="{{ url('/delete_category', $item->id) }}" onclick="return confirm('Are you sure to delete this?')">Delete</a>
-                    </td>
-                  </tr>
-                  @endforeach
+                    @foreach ($types as $type)
+                    <tr>
+                        <td>{{ $type->name_type }}</td>
+                        <td>{{ $type->category->name_category }}</td>
+                        <td>
+                            <a class="btn btn-danger"
+                                href="{{ url('/delete_type', $data->id) }}"
+                                onclick="return confirm('Are you sure to delete this?')">Delete</a>
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
               </table>
 

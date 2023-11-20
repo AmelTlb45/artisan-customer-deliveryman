@@ -135,9 +135,10 @@ input.input{
             <div class="content-wrapper">
                 <div class="div-center">
                     <h1>Add Products</h1>
-                    <form >
-                    <div class="product-form">
+                    <form action="{{ url('/add_product') }}" method="POST" enctype="multipart/form-data">
 
+                          @csrf
+                        <div class="product-form">
                       <div class="row mb-3 ">
                         <label for="name_prod" class="col-md-4 col-form-label text-md-end">{{ __('Name Product ') }}</label>
 
@@ -181,7 +182,7 @@ input.input{
                         </div>
                     </div>
                       <div class="row mb-3">
-                        <label for="quantity_min" class="col-md-4 col-form-label text-md-end">{{ __('Quantity Min') }}</label>
+                        <label for="quantity_min" class="col-md-4 col-form-label text-md-end" min="0">{{ __('Quantity Min') }}</label>
 
                         <div class="col-md-6">
                             <input id="quantity_min" class="input" type="number" class="form-control @error('quantity_min') is-invalid @enderror" name="quantity_min" value="{{ old('quantity_min') }}" required autocomplete="quantity_min" autofocus>
@@ -195,35 +196,31 @@ input.input{
                     </div>
 
 
-                      <div class="row mb-3 ">
+                    <div class="row mb-3">
                         <label for="name_category" class="col-md-4 col-form-label text-md-end">{{ __('Category') }}</label>
+                        <select name="category_id" required>
+                            <option value="" >---Enter Category ---</option>
 
-                        <div class="col-md-6">
-
-
-
-                          <div class="mt-2">
-                            <label for="name_category" class="inline-flex items-left">
-                                <input type="radio" id="sugare" name="name_category" value="sugare" {{ old('name_category') == 'sugare' ? 'checked' : '' }} required autofocus autocomplete="name_category" class="form-radio">
-                                <span class="ml-2">{{ __('Sugare') }}</span>
-                            </label>
-                        </div>
-
-                        <div class="mt-2">
-                            <label for="name_category" class="inline-flex items-left">
-                                <input type="radio" id="salt" name="name_category" value="salt" {{ old('name_category') == 'salt' ? 'checked' : '' }} required autofocus autocomplete="name_category" class="form-radio">
-                                <span class="ml-2">{{ __('Salt') }}</span>
-                            </label>
-                        </div>
-
-                        <div class="mt-2">
-                            <label for="name_category" class="inline-flex items-left">
-                                <input type="radio" id="both" name="name_category" value="both" {{ old('name_category') == 'both' ? 'checked' : '' }} required autofocus autocomplete="name_category" class="form-radio">
-                                <span class="ml-2">{{ __('Both') }}</span>
-                            </label>
-                        </div>
+                            @foreach ($categories  as $category )
+                            <option value="{{ $category->id }}" {{ isset($data) && $data->category_id == $category->id ? 'selected' : '' }}>
+                                {{ $category->name_category }}
+                            </option>
+                                            @endforeach</select>
+                        </select>
+                    </div>
 
 
+                    <div class="row mb-3 ">
+                        <label for="name_type" class="col-md-4 col-form-label text-md-end">{{ __('Type') }}</label>
+                    <select name="type_id" required>
+                        <option value="" >---Enter Type ---</option>
+
+                        @foreach ($types  as $type )
+                        <option value="{{ $type->id }}" {{ isset($data) && $data->type_id == $type->id ? 'selected' : '' }}>
+                            {{ $type->name_type }}
+                        </option>
+                                        @endforeach</select>
+                    </select>
                     </div>
 
              </div>
@@ -235,12 +232,23 @@ input.input{
                     </div>
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
-                            <button type="submit"  class="btn btn-primary" >
+                            <button type="submit"  class="btn btn-primary" value="add_product">
                                 {{ __('Enregistrer') }}
                             </button>
                         </div>
                     </div>
-                </form>
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

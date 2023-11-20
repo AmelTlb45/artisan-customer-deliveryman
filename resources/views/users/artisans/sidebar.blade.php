@@ -74,9 +74,11 @@
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{ url('/view_product') }}">Add Products</a></li>
-            <li class="nav-item"> <a class="nav-link" href="">Show Products</a></li>
 
+            <li class="nav-item"> <a class="nav-link" href="{{ url('/view_product') }}">Add Products</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{ url('/show_product') }}">List Products</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{ url('/view_category') }}">Category Management</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{ url('/view_type') }}">Type Management</a></li>
           </ul>
         </div>
       </li>
@@ -88,6 +90,7 @@
           <span class="menu-title">Shop</span>
         </a>
       </li>
+
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="artisan/pages/ui-features/buttons.html">Buttons</a></li>

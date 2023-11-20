@@ -6,14 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Models\Product;
-
+use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
 
         public function index()
         {
-            $salles = Product::get();
-            return view('salles.index', compact('salles'));
+
         }
 
 
@@ -22,7 +21,7 @@ class ProductController extends Controller
          */
         public function create()
         {
-            return view('salles.create');
+
         }
 
         /**
@@ -30,24 +29,6 @@ class ProductController extends Controller
          */
         public function store(Request $request)
         {
-            $request->validate([
-                // ????
-                // c bon j'ai compr
-                'Num_Salle' => 'required|string|unique:salles',
-            'Capacite' => 'required|integer',
-            ]);
-
-            $salle = new Product();
-            $salle->Num_Salle = $request->input('Num_Salle');
-            $salle->Capacite = $request->input('Capacite');
-
-
-            $salle->save();
-
-
-
-            return Redirect::route('salles.index')->with('success', 'Salles created successfully.');
-
         }
 
         /**
@@ -55,8 +36,7 @@ class ProductController extends Controller
          */
         public function show(int $id)
         {
-            $salle = Product::find($id);
-            return view('salles.show', compact('salle'));
+
         }
 
 
@@ -65,12 +45,7 @@ class ProductController extends Controller
          */
         public function edit(int $id)
         {
-            $salle = Product::find($id);
-            if (!$salle) {
-                return redirect()->route('salles.index')->with('error', 'Salle not found.');
-            }
 
-            return view('salles.edit', compact('salle'));
         }
 
 
@@ -79,16 +54,6 @@ class ProductController extends Controller
          */
         public function update(Request $request, int $id)
         {
-            $user = Product::find($id);
-            $request->validate([
-
-                'Num_Salle' => 'required|string',
-                'Capacite' => 'required|integer',
-
-            ]);
-
-            $user->update($request->all());
-            return redirect()->route('salles.index')->with('success', 'Salles modifier avec succès.');
         }
         /**
          * Remove the specified resource from storage.
@@ -97,9 +62,8 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+
+    public function destroy(int $id)
     {
-        $product->delete();
-        return to_route('users.artisans.products.index')->with('success', 'Product deleted successfully');
     }
 }

@@ -4,10 +4,7 @@
  @include('users.artisans.css')
   </head>
   <style>
-    .input
-    {
-      color: #2a2120;
-    }
+
     .main-panel {
         background-color: #20232a; /* Dark background color */
         color: #ffffff; /* Light text color */
@@ -130,40 +127,45 @@
               </div>
                 @endif
             <div class="div_center">
-                <h2 class="h2_font">Add Category</h2>
-               <form action="{{ url('/add_category') }}" method="POST">
-                @csrf
-                <input class="modern-input" type="text" name="name_category" placeholder="Write a category...">
+                <h2 class="h2_font">List Products </h2>
+               <form action="{{ url('/show_product') }}" method="GET" >
 
-                <input class="modern-input" type="number" name="nbr_prod" placeholder="Number products ...">
-                <input type="submit" class="modern-button" name="submit" value="add_category">
-
-               </form>
-
-            </div>
 
             <table class="modern-table" class="center">
                 <thead>
                   <tr>
+                    <th>Product Image</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity_Min</th>
                     <th>Category Name</th>
-                    <th>Product Number</th>
+                    <th>Type Name</th>
+                    <th>Description</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($data as $item)
-                  <tr>
-                    <td>{{ $item->name_category }}</td>
-                    <td>{{ $item->nbr_prod}}</td>
-                    <td>
-                      <a class="btn btn-danger" href="{{ url('/delete_category', $item->id) }}" onclick="return confirm('Are you sure to delete this?')">Delete</a>
-                    </td>
-                  </tr>
-                  @endforeach
+                    @foreach ($data as $prod)
+                    <tr>
+                        <td>{{ $prod->image }}</td>
+                        <td>{{ $prod->name_prod }}</td>
+                        <td>{{ $prod->price }}</td>
+                        <td>{{ $prod->quantity_min }}</td>
+                        <td>{{ $prod->category->name_category }}</td>
+                        <td>{{ $prod->type->name_type }}</td>
+                        <td>{{ $prod->description }}</td>
+                        <td>
+                            <a class="btn btn-danger"
+
+                                href="{{ url('/delet_product', $data->id) }}"
+                                onclick="return confirm('Are you sure to delete this?')">Delete</a>
+                        </td>
+                    </tr>
+                @endforeach
                 </tbody>
               </table>
 
-
+               </form>
 
             </div>
         </div>
@@ -172,3 +174,4 @@
     @include('users.artisans.js')
   </body>
 </html>
+
