@@ -1,13 +1,32 @@
 <div class="side_menu">
-    <a class="logo" href="#">
+    <a class="logo" href="{{ url('/') }}">
         <img src="home/img/logo.png" alt="">
     </a>
     <ul class="list menu_right">
         <li>
-            <a href="index.html">Home</a>
+            @if (Route::has('login'))
+                @auth
+                  <li>
+                    <x-app-layout>
+                    </x-app-layout>
+                </li>
+                @else
+                    <li>
+                        <a class="btn btn-success" id="logincss" href="{{ route('login') }}">Login</a>
+                    </li>
+                    @if (Route::has('register'))
+                        <li>
+                            <a class="btn btn-primary" id="registercss" href="{{ route('register') }}">Register</a>
+                        </li>
+                    @endif
+                @endauth
+            @endif
         </li>
         <li>
-            <a href="about-us.html">About</a>
+            <a href="{{ url('/') }}">Home</a>
+        </li>
+        <li>
+            <a href="{{ url('products') }}">Diches</a>
         </li>
         <li>
             <a href="menu.html">Menu</a>
@@ -40,45 +59,13 @@
         <li>
             <a href="contact.html">Contact</a>
         </li>
-        @if (Route::has('login'))
-            @auth
-            <li>
-                <x-app-layout>
-                </x-app-layout>
-            </li>
-            @else
-                <li>
-                    <a class="btn btn-success" id="logincss" href="{{ route('login') }}">Login</a>
-                </li>
-                @if (Route::has('register'))
-                    <li>
-                        <a class="btn btn-primary" id="registercss" href="{{ route('register') }}">Register</a>
-                    </li>
-                @endif
-            @endauth
-        @endif
+        <li>
+            <a href="{{ url('/show_cart') }}">Cart</a>
+        </li>
+        <li>
+            <a href="{{ url('show_order') }}">Order</a>
+        </li>
 
     </ul>
-    <ul class="list social">
-        <li>
-            <a href="#">
-                <i class="fa fa-facebook"></i>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-twitter"></i>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-dribbble"></i>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fa fa-behance"></i>
-            </a>
-        </li>
-    </ul>
+
 </div>

@@ -8,14 +8,14 @@
   .main-panel {
     background-color: #20232a; /* Dark background color */
     color: #ffffff; /* Light text color */
-    padding: 20px;
+
   }
 
   /* Content Wrapper */
   .content-wrapper {
     background-color: #2d323c; /* Slightly lighter background for content */
-    padding: 20px;
-    border-radius: 2px;
+
+
   }
   .input
   {
@@ -172,7 +172,7 @@ input.input{
                          <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('Price') }}</label>
 
                         <div class="col-md-6">
-                            <input  class="input" id="price" type="number" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus>
+                            <input  class="input" id="price" type="number" min="1"  class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus>
 
                             @error('price')
                                 <span class="invalid-feedback" role="alert">
@@ -185,7 +185,7 @@ input.input{
                         <label for="quantity_min" class="col-md-4 col-form-label text-md-end" min="0">{{ __('Quantity Min') }}</label>
 
                         <div class="col-md-6">
-                            <input id="quantity_min" class="input" type="number" class="form-control @error('quantity_min') is-invalid @enderror" name="quantity_min" value="{{ old('quantity_min') }}" required autocomplete="quantity_min" autofocus>
+                            <input id="quantity_min" class="input" min="1" type="number" class="form-control @error('quantity_min') is-invalid @enderror" name="quantity_min" value="{{ old('quantity_min') }}" required autocomplete="quantity_min" autofocus>
 
                             @error('quantity_min')
                                 <span class="invalid-feedback" role="alert">

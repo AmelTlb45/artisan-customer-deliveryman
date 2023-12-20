@@ -15,7 +15,7 @@
       </ul>
       <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item dropdown d-none d-lg-block">
-          <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="#">+ Create New Project</a>
+          <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="#">+ Create</a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
             <h6 class="p-3 mb-0">Projects</h6>
             <div class="dropdown-divider"></div>
@@ -26,7 +26,7 @@
                 </div>
               </div>
               <div class="preview-item-content">
-                <p class="preview-subject ellipsis mb-1">Software Development</p>
+                <a class="preview-subject ellipsis mb-1" href="{{ url('') }}">Product</a>
               </div>
             </a>
             <div class="dropdown-divider"></div>
@@ -37,7 +37,7 @@
                 </div>
               </div>
               <div class="preview-item-content">
-                <p class="preview-subject ellipsis mb-1">UI Development</p>
+                <a class="preview-subject ellipsis mb-1" ><a href="{{ url('') }}">Product</a></p>
               </div>
             </a>
             <div class="dropdown-divider"></div>
@@ -48,11 +48,21 @@
                 </div>
               </div>
               <div class="preview-item-content">
-                <p class="preview-subject ellipsis mb-1">Software Testing</p>
+                <p class="preview-subject ellipsis mb-1"><a href="{{ url('') }}">Product</a></p>
               </div>
             </a>
+            
             <div class="dropdown-divider"></div>
-            <p class="p-3 mb-0 text-center">See all projects</p>
+            <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-dark rounded-circle">
+                    <i class="mdi mdi-layers text-danger"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <a class="preview-subject ellipsis mb-1"><a href="{{ url('') }}">Product</a></p>
+                </div>
+              </a>
           </div>
         </li>
         <li class="nav-item nav-settings d-none d-lg-block">
@@ -148,9 +158,17 @@
             <p class="p-3 mb-0 text-center">See all notifications</p>
           </div>
         </li>
-<li>
-<x-app-layout>
-</x-app-layout>
-</li>
-    </div>
+
+        <li class="nav-item dropdown border-left">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+
+            </a>
+            <div aria-labelledby="notificationDropdown">
+                <x-app-layout >
+                </x-app-layout>
+
+            </div>
+
+          </li>
+</div>
   </nav>

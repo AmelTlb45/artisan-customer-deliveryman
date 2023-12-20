@@ -1,5 +1,6 @@
 <script src="artisan/assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
+    
     <!-- Plugin js for this page -->
     <script src="artisan/assets/vendors/chart.js/Chart.min.js"></script>
     <script src="artisan/assets/vendors/progressbar.js/progressbar.min.js"></script>

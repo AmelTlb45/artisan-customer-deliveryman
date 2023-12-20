@@ -212,17 +212,11 @@
 	@include('home.canvus')
 	<!--================End Canvus Menu Area =================-->
 
-	<!--================ Start banner section =================-->
-      @include('home.banner')
-	<!--================ End banner section =================-->
 
 	<!--================ Top Dish Area =================-->
      @include('home.dish')
 	<!--================ End Top Dish Area =================-->
 
-	<!--================ Menu Area =================-->
-	@include('home.menu')
-	<!--================End Menu Area =================-->
 
     <!--================ Comment and Replay System Starts Here =================-->
     <div class="comment-section">
@@ -316,7 +310,7 @@
         window.onbeforeunload = function(e) {
             localStorage.setItem('scrollpos', window.scrollY);
         };
-    </script> 
+    </script>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="home/js/jquery-3.2.1.min.js"></script>

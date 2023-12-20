@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="main_title position-relative">
-                    <h1>Our  Dishes</h1>
+                    <h1>Our <span> Dishes </span></h1>
                     <hr>
                     <div class="round-planet planet">
                         <div class="round-planet planet2">
@@ -13,7 +13,7 @@
                         </div>
                     </div>
                 </div>
-                <form action="{{ url('product_search') }}" method="GET">
+                <form action="{{ url('search_product') }}" method="GET">
                     @csrf
                  <input style="width: 500px;" type="text" name="search" placeholder="Search for Diche ...">
                   <input type="submit" value="search">
