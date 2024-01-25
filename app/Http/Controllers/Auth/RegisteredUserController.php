@@ -46,8 +46,9 @@ class RegisteredUserController extends Controller
             'address' => ['nullable', 'string'],
             'Heur_Overture' => ['nullable', 'string'],
             'Heur_Fermetur' => ['nullable', 'string'],
+         
             'Description' => ['nullable', 'string'],
-            /*'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'gif', 'max:2048'],*/
+            'Dispo' => ['nullable', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
 
@@ -60,8 +61,9 @@ class RegisteredUserController extends Controller
             'address' => $request->address,
             'Heur_Overture' => $request->Heur_Overture,
             'Heur_Fermetur' => $request->Heur_Fermetur,
+
             'Description' => $request->Description,
-            'image' => $request->image,
+            'Dispo' => $request->Dispo,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);

@@ -64,7 +64,19 @@
             </div>
 
             @endforeach
+             {{-- Display Artisan Profiles --}}
+             @foreach ($artisan as $artisa)
+             <div class="single_dish col-lg-4 col-md-6 text-center">
+                 <a href="{{ url('/artisan_profile', $artisa->id) }}">
+                     <div class="thumb">
+                         {{-- You may want to replace this with the artisan's profile image --}}
 
+                     </div>
+                     <h4>{{ $artisa->name }}</h4>
+                     {{-- Add other artisan details as needed --}}
+                 </a>
+             </div>
+         @endforeach
         </div>
     </div>
 </section>

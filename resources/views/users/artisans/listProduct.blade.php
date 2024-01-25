@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
- @include('users.artisans.css')
+    @include('users.artisans.sitefavicon')
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    @include('users.artisans.script')
   </head>
   <style>
     .div_center
@@ -68,7 +70,7 @@
           background-color: #ff3333;
         }
         .body{
-          background-color: #ff3333;
+          background-color: #f7f7f7;
         }
         /* Common styles for all buttons */
 .btn {
@@ -108,72 +110,76 @@
 
   </style>
   <body class="body">
-    <div class="container-scroller">
-      <!-- partial:partials/_sidebar.html -->
-     @include('users.artisans.sidebar')
-      <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_navbar.html -->
-        @include('users.artisans.header')
-        <!-- partial -->
-        <div class="main-panel">
-            <div class="content-wrapper">
-                @if (session()->has('message'))
-              <div class="alert alert-success">
-                   <button  type="button"   class="close"   data-dismiss="alert" aria-hidden="true">x</button>
-                {{ session()->get('message') }}
-              </div>
-                @endif
-            <div class="div_center">
-                <h2 class="h2_font">ALL Products </h2>
-               <form action="{{ url('/show_product') }}" method="GET" >
+    @include('users.artisans.loader')
+
+    @include('users.artisans.header')
+
+    @include('users.artisans.sidebar-right')
+
+    @include('users.artisans.sidebar-left')
 
 
-            <table class="modern-table" class="center">
-                <thead>
-                  <tr>
-                    <th>Product Image</th>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Quantity_Min</th>
-                    <th>Category Name</th>
-                    <th>Type Name</th>
-                    <th>Description</th>
-                    <th>Delete</th>
-                    <th>Show</th>
-                    <th>Update</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    @foreach ($data as $prod)
-                    <tr>
-                        <td>
-                            <!-- Display the image -->
-                            <img src="{{ asset($prod->image) }}" alt="{{ $prod->name_prod }}" style="max-width: 100px;">
-                        </td>
-                        <td>{{ $prod->name_prod }}</td>
-                        <td>{{ $prod->price }}</td>
-                        <td>{{ $prod->quantity_min }}</td>
-                        <td>{{ $prod->category->name_category }}</td>
-                        <td>{{ $prod->type->name_type }}</td>
-                        <td>{{ $prod->description }}</td>
-                        <td><a class="btn btn-danger" href="{{ url('/delete_product', $prod->id) }}" onclick="return confirm('Are you sure to delete this?')">Delete</a></td>
-                        <td> <a class="btn btn-primary" href="{{ url('/show_product1', $prod->id) }}">Show</a></td>
-                        <td>
-                            <a class="btn btn-success" href="{{ url('/update_product', $prod->id) }}">Update</a>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-              </table>
+    <div class="main-container">
+        <div class="pd-ltr-20 xs-pd-20-10">
+            <div class="min-height-200px">
+                <div class="page-header">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="title">
+                                <h4>Products</h4>
+                            </div>
+                            <nav aria-label="breadcrumb" role="navigation">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ url('/redirect') }}">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page" style="color:  rgb(250, 206, 84);">
+                                        Products
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-wrap">
+                    <div class="product-list">
+                        <ul class="row">
+                            @foreach ($data as $prod)
+                            <li class="col-lg-4 col-md-6 col-sm-12">
+                                <div class="product-box">
+                                    <div class="producct-img">
+                                        <img src="{{ asset($prod->image) }}" alt="{{ $prod->name_prod }}"/>
+                                    </div>
+                                    <div class="product-caption">
+                                        <h4><a href="#">{{ $prod->name_prod }}</a></h4>
+                                        <div class="price"><ins>{{ $prod->price }}.DA</ins></div>
 
-               </form>
+                                            <div class="dropdown">
+                                                <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+                                                    href="#" role="button" data-toggle="dropdown">
+                                                    <i class="dw dw-more"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                                    <a class="dropdown-item" href="{{ url('/show_product1', $prod->id) }}"><i class="dw dw-eye"></i> View</a>
+                                                    <a class="dropdown-item" href="{{ url('/update_product', $prod->id) }}"><i class="dw dw-edit2"></i> Edit</a>
+                                                    <a class="dropdown-item" href="{{ url('/delete_product', $prod->id) }}"
+                                                        onclick="return confirm('Are you sure to delete this?')"><i
+                                                            class="dw dw-delete-3"></i> Delete</a>
+                                                </div>
+                                            </div>
 
+                                    </div>
+                                </div>
+                            </li>
+
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    <!-- container-scroller -->
- 
-    
+    </div>
+
 
     <!-- plugins:js -->
     @include('users.artisans.js')

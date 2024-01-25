@@ -19,11 +19,15 @@ return new class extends Migration
             //commun
             $table->string('phone')->nullable(); // Use dedicated "phone" type or format constraint
             $table->string('address')->nullable(); // Use text type for longer content
-            $table->string('image', 2048)->nullable();
+
             //artisan and delivery only
             $table->string('Heur_Overture')->nullable();
             $table->string('Heur_Fermetur')->nullable();
+            //commun
+
             $table->string('Description')->nullable();
+           //dev
+          
             //email
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <base href="/public">
- @include('users.artisans.css')
+    @include('users.artisans.sitefavicon')
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    @include('users.artisans.script')
  <style type="text/css">
 
   /* Main Panel */
@@ -59,6 +62,10 @@
     textarea.form-control {
       height: 150px;
     }
+
+
+
+
 
         .product-form {
           background-color: #333; /* Dark background color */
@@ -127,7 +134,7 @@ input.input{
 .user-details-table td {
     padding: 15px;
     vertical-align: top;
-    color: white; /* White text color */
+    color: rgb(12, 12, 12); /* White text color */
 }
 
 .custom-image {
@@ -139,18 +146,21 @@ input.input{
  </style>
   </head>
   <body>
-    <div class="container-scroller">
-      <!-- partial:partials/_sidebar.html -->
-     @include('users.artisans.sidebar')
-      <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_navbar.html -->
-        @include('users.artisans.header')
-        <!-- partial -->
-        <div class="main-panel">
-            <div class="content-wrapper">
-                <div class="div-center">
+    @include('users.artisans.loader')
 
+    @include('users.artisans.header')
+
+    @include('users.artisans.sidebar-right')
+
+    @include('users.artisans.sidebar-left')
+
+    <div class="main-container">
+
+
+                
+
+
+                        <div class="pd-20 card-box mb-30">
                     <form action="{{ url('/show_order',$data->id) }}" method="POST" enctype="multipart/form-data">
                         @if ($data)
                         <div class="card">
@@ -195,6 +205,16 @@ input.input{
                                                             <td><strong>Delivery status:</strong></td>
                                                             <td>{{ $data->delivery_status }}</td>
                                                         </tr>
+                                                        <tr>
+                                                            <td><strong>The Date:</strong></td>
+                                                            <td>{{ $data->created_at->format('M d, Y') }}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>The Time:</strong></td>
+                                                            <td>{{ $data->created_at->format('H:i:s') }}</td>
+                                                        </tr>
+
+
                                                         <!-- Add more details as needed -->
                                                     </tbody>
                                                 </table>
@@ -214,6 +234,9 @@ input.input{
                 </div>
             </div>
         </div>
+
+
+
     <!-- container-scroller -->
     <!-- plugins:js -->
     @include('users.artisans.js')

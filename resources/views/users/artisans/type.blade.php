@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
- @include('users.artisans.css')
+    @include('users.artisans.sitefavicon')
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    @include('users.artisans.script')
   </head>
   <style>
 
@@ -110,81 +113,162 @@
 
   </style>
   <body>
-    <div class="container-scroller">
-      <!-- partial:partials/_sidebar.html -->
-     @include('users.artisans.sidebar')
-      <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_navbar.html -->
-        @include('users.artisans.header')
-        <!-- partial -->
-        <div class="main-panel">
-            <div class="content-wrapper">
-                @if (session()->has('message'))
+    @include('users.artisans.loader')
+
+    @include('users.artisans.header')
+
+    @include('users.artisans.sidebar-right')
+
+    @include('users.artisans.sidebar-left')
+
+    <div class="main-container">
+        <div class="pd-ltr-20 xs-pd-20-10">
+            <div class="min-height-200px">
+                <div class="page-header">
+                    <div class="row">
+                        @if (session()->has('message'))
               <div class="alert alert-success">
                    <button  type="button"   class="close"   data-dismiss="alert" aria-hidden="true">x</button>
                 {{ session()->get('message') }}
               </div>
                 @endif
-            <div class="div_center">
-                <h2 class="h2_font">Add Types</h2>
-               <form action="{{ url('/add_type') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="row mb-3">
-                <label for="neme_type" class="col-md-4 col-form-label text-md-end">{{ __('Type') }}</label>
-                <input class="modern-input" type="text" name="name_type" placeholder="Write a Type...">
-                    <label for="name_category" class="col-md-4 col-form-label text-md-end">{{ __('Category') }}</label>
-                    <select name="category_id" required>
-                        <option value="" >---Enter Category ---</option>
-
-                        @foreach ($categories  as $category )
-                        <option value="{{ $category->id }}" {{ isset($data) && $data->category_id == $category->id ? 'selected' : '' }}>
-                            {{ $category->name_category }}
-                        </option>
-                                        @endforeach</select>
-                    </select>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="title">
+                                <h4>Type Management</h4>
+                            </div>
+                            <nav aria-label="breadcrumb" role="navigation">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ url('/redirect') }}">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page"style="color:  rgb(250, 206, 84);">
+                                        Type Management
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <div class="col-md-6 col-sm-12 text-right">
+                            <div class="dropdown">
+                                <a class="btn btn-secondary dropdown-toggle" href="#" role="button"
+                                    data-toggle="dropdown">
+                                    January 2023
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="#">Export List</a>
+                                    <a class="dropdown-item" href="#">Policies</a>
+                                    <a class="dropdown-item" href="#">View Assets</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <input type="submit" class="modern-button" name="submit" value="add_type">
-               </form>
-               @if ($errors->any())
-               <div class="alert alert-danger">
-                   <ul>
-                       @foreach ($errors->all() as $error)
-                           <li>{{ $error }}</li>
-                       @endforeach
-                   </ul>
-               </div>
-           @endif
+                <!-- Default Basic Forms Start -->
+                <div class="pd-20 card-box mb-30">
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            <h4 class="text-gray h4">Add Type</h4>
 
-            </div>
+                        </div>
 
-            <table class="modern-table" class="center">
-                <thead>
-                  <tr>
-                    <th>Type Name</th>
-                    <th>Category Name</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    @foreach ($types as $type)
-                    <tr>
-                        <td>{{ $type->name_type }}</td>
-                        <td>{{ $type->category->name_category }}</td>
-                        <td>
-                            <a class="btn btn-danger"
-                                href="{{ url('/delete_type', $type->id) }}"
-                                onclick="return confirm('Are you sure to delete this?')">Delete</a>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-              </table>
+                    </div>
+                    <form action="{{ url('/add_type') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group row">
+                            <label for="neme_type" class="col-sm-12 col-md-2 col-form-label">Text</label>
+                            <div class=" col-md-4">
+                                <input class="form-control" type="text" name="name_type" placeholder="Write a Type...">
+                            </div>
+                        </div>
 
 
 
+                        <div class="form-group row">
+
+                            <label  for="name_category" class="col-sm-12 col-md-2 col-form-label">Category Name</label>
+                            <div class="col-sm-12 col-md-4">
+                            <select name="category_id"  class="custom-select col-12" required>
+                                <option value="" >Choose...</option>
+
+                                @foreach ($categories  as $category )
+                                <option value="{{ $category->id }}" {{ isset($data) && $data->category_id == $category->id ? 'selected' : '' }}>
+                                    {{ $category->name_category }}
+                                </option>
+                                                @endforeach
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+
+                            <div class="col-md-6 offset-md-6 text-right">
+                                <input class="btn btn-success" type="submit" value="Add" />
+                            </div>
+                        </div>
+                    </form>
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                </div>
             </div>
         </div>
+        <!-- Default Basic Forms End -->
+
+        <div class="pd-20 card-box mb-30">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <h4 class="text-gray h4">List Of Type</h4>
+
+                </div>
+            </div>
+            <table class="data-table table stripe hover nowrap">
+                <thead>
+                    <tr>
+
+
+                  </tr>
+                        <th class="table-plus datatable-nosort">Type Name</th>
+
+                        <th>Category Name</th>
+
+                        <th class="datatable-nosort">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach ($types as $type)
+                            <tr>
+                                <td class="table-plus">{{ $type->name_type }}</td>
+                                <td>{{ $type->category->name_category }}</td>
+
+
+                            <td>
+
+                                <div class="dropdown">
+                                    <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+                                        href="#" role="button" data-toggle="dropdown">
+                                        <i class="dw dw-more"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+
+                                        <a class="dropdown-item"  href="{{ url('delet_type', $type->id) }}"
+                                            onclick="return confirm('Are you sure to delete this?')"><i
+                                                class="dw dw-delete-3"></i> Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <!-- container-scroller -->
     <!-- plugins:js -->
     @include('users.artisans.js')

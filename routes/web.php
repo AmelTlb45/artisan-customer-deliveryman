@@ -54,6 +54,18 @@ Route::middleware('auth')->group(function () {
 
 
 //ARTISAN
+Route::get('/charts',[ArtisanController::class,'charts']);
+
+Route::get('/list_deliveryman/{id}',[ArtisanController::class,'list_deliveryman']);
+
+Route::get('/dispo_mission/{orderId}',[ArtisanController::class,'dispo_mission']);
+//deliveryman
+
+
+Route::get('/order_delivery',[ArtisanController::class,'order_delivery']);
+Route::get('/dispo',[ArtisanController::class,'dispo']);
+Route::get('/changeDispo',[ArtisanController::class,'changeDispo'])->name('changeDispo');
+
 //Category
 Route::get('/view_category',[ArtisanController::class,'view_category']);
 Route::post('/add_category',[ArtisanController::class,'add_category']);
@@ -69,13 +81,15 @@ Route::post('/update_product_confirm/{id}',[ArtisanController::class,'update_pro
 //Type
 Route::post('/add_type',[ArtisanController::class,'add_type']);
 Route::get('/view_type',[ArtisanController::class,'view_type']);
-Route::get('/delete_type/{id}',[ArtisanController::class,'delete_type']);
+Route::get('/delet_type/{id}',[ArtisanController::class,'delet_type']);
 Route::get('/order',[ArtisanController::class,'order']);
 Route::get('/show_order/{id}',[ArtisanController::class,'show_order']);
 Route::get('/delivered/{id}',[ArtisanController::class,'delivered']);
 Route::get('/search',[ArtisanController::class,'searchdata']);
 
 //HOME
+
+Route::get('/artisan_profile/{id}',[HomeController::class,'artisan_profile']);
 Route::get('/redirect',[HomeController::class,'redirect']);
 Route::get('/',[HomeController::class,'index']);
 Route::get('/product_details/{id}',[HomeController::class,'product_details']);

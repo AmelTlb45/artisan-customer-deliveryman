@@ -1,20 +1,10 @@
-<script src="artisan/assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    
-    <!-- Plugin js for this page -->
-    <script src="artisan/assets/vendors/chart.js/Chart.min.js"></script>
-    <script src="artisan/assets/vendors/progressbar.js/progressbar.min.js"></script>
-    <script src="artisan/assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="artisan/assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="artisan/assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="artisan/assets/js/off-canvas.js"></script>
-    <script src="artisan/assets/js/hoverable-collapse.js"></script>
-    <script src="artisan/assets/js/misc.js"></script>
-    <script src="artisan/assets/js/settings.js"></script>
-    <script src="artisan/assets/js/todolist.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="artisan/assets/js/dashboard.js"></script>
-    <!-- End custom js for this page -->
+<script src="artisan/vendors/scripts/core.js"></script>
+<script src="artisan/vendors/scripts/script.min.js"></script>
+<script src="artisan/vendors/scripts/process.js"></script>
+<script src="artisan/vendors/scripts/layout-settings.js"></script>
+<script src="artisan/src/plugins/apexcharts/apexcharts.min.js"></script>
+<script src="artisan/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="artisan/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="artisan/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+<script src="artisan/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<script src="artisan/vendors/scripts/dashboard3.js"></script>

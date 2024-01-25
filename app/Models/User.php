@@ -22,10 +22,11 @@ class User extends Authenticatable
         'role',
         'phone',
         'address',
-        'image',
         'Heur_Overture',
         'Heur_Fermetur',
+        'image',
         'Description',
+        'Dispo',
         'email',
         'password'
 

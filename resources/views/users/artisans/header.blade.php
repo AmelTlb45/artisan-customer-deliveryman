@@ -1,173 +1,197 @@
-<nav class="navbar p-0 fixed-top d-flex flex-row">
-    <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-      <a class="navbar-brand brand-logo-mini" href="index.html"><img src="artisan/assets/images/logo-mini.svg" alt="logo" /></a>
+<div class="header">
+    <div class="header-left">
+        <div class="menu-icon bi bi-list"></div>
+        <div
+            class="search-toggle-icon bi bi-search"
+            data-toggle="header_search"
+        ></div>
+        <div class="header-search">
+            <form>
+                <div class="form-group mb-0">
+                    <i class="dw dw-search2 search-icon"></i>
+                    <input
+                        type="text"
+                        class="form-control search-input"
+                        placeholder="Search Here"
+                    />
+                    <div class="dropdown">
+                        <a
+                            class="dropdown-toggle no-arrow"
+                            href="#"
+                            role="button"
+                            data-toggle="dropdown"
+                        >
+                            <i class="ion-arrow-down-c"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-2 col-form-label"
+                                    >From</label
+                                >
+                                <div class="col-sm-12 col-md-10">
+                                    <input
+                                        class="form-control form-control-sm form-control-line"
+                                        type="text"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-2 col-form-label">To</label>
+                                <div class="col-sm-12 col-md-10">
+                                    <input
+                                        class="form-control form-control-sm form-control-line"
+                                        type="text"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-12 col-md-2 col-form-label"
+                                    >Subject</label
+                                >
+                                <div class="col-sm-12 col-md-10">
+                                    <input
+                                        class="form-control form-control-sm form-control-line"
+                                        type="text"
+                                    />
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <button class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
-      <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-        <span class="mdi mdi-menu"></span>
-      </button>
-      <ul class="navbar-nav w-100">
-        <li class="nav-item w-100">
-          <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-            <input type="text" class="form-control" placeholder="Search products">
-          </form>
-        </li>
-      </ul>
-      <ul class="navbar-nav navbar-nav-right">
-        <li class="nav-item dropdown d-none d-lg-block">
-          <a class="nav-link btn btn-success create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="#">+ Create</a>
-          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
-            <h6 class="p-3 mb-0">Projects</h6>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item">
-              <div class="preview-thumbnail">
-                <div class="preview-icon bg-dark rounded-circle">
-                  <i class="mdi mdi-file-outline text-primary"></i>
-                </div>
-              </div>
-              <div class="preview-item-content">
-                <a class="preview-subject ellipsis mb-1" href="{{ url('') }}">Product</a>
-              </div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item">
-              <div class="preview-thumbnail">
-                <div class="preview-icon bg-dark rounded-circle">
-                  <i class="mdi mdi-web text-info"></i>
-                </div>
-              </div>
-              <div class="preview-item-content">
-                <a class="preview-subject ellipsis mb-1" ><a href="{{ url('') }}">Product</a></p>
-              </div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item">
-              <div class="preview-thumbnail">
-                <div class="preview-icon bg-dark rounded-circle">
-                  <i class="mdi mdi-layers text-danger"></i>
-                </div>
-              </div>
-              <div class="preview-item-content">
-                <p class="preview-subject ellipsis mb-1"><a href="{{ url('') }}">Product</a></p>
-              </div>
-            </a>
-
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-dark rounded-circle">
-                    <i class="mdi mdi-layers text-danger"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <a class="preview-subject ellipsis mb-1"><a href="{{ url('') }}">Product</a></p>
-                </div>
-              </a>
-          </div>
-        </li>
-        <li class="nav-item nav-settings d-none d-lg-block">
-          <a class="nav-link" href="#">
-            <i class="mdi mdi-view-grid"></i>
-          </a>
-        </li>
-        <li class="nav-item dropdown border-left">
-          <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-            <i class="mdi mdi-email"></i>
-            <span class="count bg-success"></span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-            <h6 class="p-3 mb-0">Messages</h6>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item">
-              <div class="preview-thumbnail">
-                <img src="artisan/assets/images/faces/face4.jpg" alt="image" class="rounded-circle profile-pic">
-              </div>
-              <div class="preview-item-content">
-                <p class="preview-subject ellipsis mb-1">Mark send you a message</p>
-                <p class="text-muted mb-0"> 1 Minutes ago </p>
-              </div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item">
-              <div class="preview-thumbnail">
-                <img src="artisan/assets/images/faces/face2.jpg" alt="image" class="rounded-circle profile-pic">
-              </div>
-              <div class="preview-item-content">
-                <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
-                <p class="text-muted mb-0"> 15 Minutes ago </p>
-              </div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item">
-              <div class="preview-thumbnail">
-                <img src="artisan/assets/images/faces/face3.jpg" alt="image" class="rounded-circle profile-pic">
-              </div>
-              <div class="preview-item-content">
-                <p class="preview-subject ellipsis mb-1">Profile picture updated</p>
-                <p class="text-muted mb-0"> 18 Minutes ago </p>
-              </div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <p class="p-3 mb-0 text-center">4 new messages</p>
-          </div>
-        </li>
-        <li class="nav-item dropdown border-left">
-          <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-            <i class="mdi mdi-bell"></i>
-            <span class="count bg-danger"></span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-            <h6 class="p-3 mb-0">Notifications</h6>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item">
-              <div class="preview-thumbnail">
-                <div class="preview-icon bg-dark rounded-circle">
-                  <i class="mdi mdi-calendar text-success"></i>
-                </div>
-              </div>
-              <div class="preview-item-content">
-                <p class="preview-subject mb-1">Event today</p>
-                <p class="text-muted ellipsis mb-0"> Just a reminder that you have an event today </p>
-              </div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item">
-              <div class="preview-thumbnail">
-                <div class="preview-icon bg-dark rounded-circle">
-                  <i class="mdi mdi-settings text-danger"></i>
-                </div>
-              </div>
-              <div class="preview-item-content">
-                <p class="preview-subject mb-1">Settings</p>
-                <p class="text-muted ellipsis mb-0"> Update dashboard </p>
-              </div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item">
-              <div class="preview-thumbnail">
-                <div class="preview-icon bg-dark rounded-circle">
-                  <i class="mdi mdi-link-variant text-warning"></i>
-                </div>
-              </div>
-              <div class="preview-item-content">
-                <p class="preview-subject mb-1">Launch Admin</p>
-                <p class="text-muted ellipsis mb-0"> New admin wow! </p>
-              </div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <p class="p-3 mb-0 text-center">See all notifications</p>
-          </div>
-        </li>
-
-        <li class="nav-item dropdown border-left">
-            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-
-            </a>
-            <div aria-labelledby="notificationDropdown">
-                <x-app-layout >
-                </x-app-layout>
+    <div class="header-right">
+        <div class="dashboard-setting user-notification">
+            <div class="dropdown">
+                <a
+                    class="dropdown-toggle no-arrow"
+                    href="javascript:;"
+                    data-toggle="right-sidebar"
+                >
+                    <i class="dw dw-settings2"></i>
+                </a>
             </div>
+        </div>
+        <div class="user-notification">
+            <div class="dropdown">
+                <a
+                    class="dropdown-toggle no-arrow"
+                    href="#"
+                    role="button"
+                    data-toggle="dropdown"
+                >
+                    <i class="icon-copy dw dw-notification"></i>
+                    <span class="badge notification-active"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="notification-list mx-h-350 customscroll">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <img src="artisan/vendors/images/img.jpg" alt="" />
+                                    <h3>John Doe</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                                        elit, sed...
+                                    </p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="artisan/vendors/images/photo1.jpg" alt="" />
+                                    <h3>Lea R. Frith</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                                        elit, sed...
+                                    </p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="artisan/vendors/images/photo2.jpg" alt="" />
+                                    <h3>Erik L. Richards</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                                        elit, sed...
+                                    </p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="artisan/vendors/images/photo3.jpg" alt="" />
+                                    <h3>John Doe</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                                        elit, sed...
+                                    </p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="artisan/vendors/images/photo4.jpg" alt="" />
+                                    <h3>Renee I. Hansen</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                                        elit, sed...
+                                    </p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="artisan/vendors/images/img.jpg" alt="" />
+                                    <h3>Vicki M. Coleman</h3>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                                        elit, sed...
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="user-info-dropdown">
+            <div class="dropdown">
+                <a
+                    class="dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-toggle="dropdown"
+                >
+                <span class="user-icon">
+                    <img src="artisan/vendors/images/profile-photo.jpg" alt="" />
+                </span>
 
-          </li>
+
+                    <span class="user-name"> {{ Auth::user()->name }}</span>
+                </a>
+                <div
+                    class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
+                >
+
+                    <a class="dropdown-item" href="{{ route('profile.edit') }}"
+                        ><i class="dw dw-user1"></i> Profile</a
+                    >
+                    <a class="dropdown-item"  href="{{  url('/redirect')}}"
+                        ><i class="dw dw-settings2"></i> Dashboard</a
+                    >
+                    <a class="dropdown-item" href="{{ url('/') }}"
+                        ><i class="dw dw-help"></i> Home</a
+                    >
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                    <a class="dropdown-item" href="route('logout')"
+                    onclick="event.preventDefault(); this.closest('form').submit();"><i class="dw dw-logout"></i> Log Out</a
+                    >
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
-  </nav>

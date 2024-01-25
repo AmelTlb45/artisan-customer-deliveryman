@@ -21,31 +21,13 @@
 <div>
     <x-dropdown align="center" >
         <x-slot name="trigger">
-            <style>
-                .custom-button {
-                    display: inline-block;
-                    padding: 10px 20px; /* Adjust padding for the button size */
-                    font-weight: bold;
-                    border: 2px solid #007bff;
-                    border-radius: 15px; /* Adjust border-radius for rounded corners */
-                    font-size: 16px; /* Adjust text size */
-                    background-color: #007bff;
-                    color: #fff;
-                    cursor: pointer;
-                    transition: background-color 0.3s ease;
-                    text-decoration: none;
-                }
 
-
-                .custom-button:hover {
-                    background-color: #0056b3;
-                }
             </style>
             <button class="custom-button" >
                 @if (Auth::check())
-                <a href="{{ url('/redirect') }}" style="color: white; font-weight: bold;">
+               
                     {{ Auth::user()->name }}
-                </a>
+
 
                 @else
                     <div>User is not authenticated</div>
@@ -54,12 +36,7 @@
         </x-slot>
 
         <x-slot name="content">
-            <style>
-                .dark-dropdown-item {
-                    background-color: #333; /* Change this to your desired dark color */
-                    color: #fff; /* Change this to the desired text color */
-                }
-            </style>
+
 
             <x-dropdown-link :href="url('/redirect')" class="dark-dropdown-item">
                 {{ __('Dashboard') }}

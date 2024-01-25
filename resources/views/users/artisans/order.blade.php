@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    @include('users.artisans.sitefavicon')
 
- @include('users.artisans.css')
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    @include('users.artisans.script')
   </head>
   <style>
     .div_center
@@ -72,9 +74,7 @@
         .btn-danger:hover {
           background-color: #ff3333;
         }
-        .body{
-          background-color: #ff3333;
-        }
+
         /* Delivery button style */
 .btn-delivery {
     background-color: #28a745; /* Adjust background color for delivery */
@@ -120,72 +120,67 @@ input[type="text"] {
 
   </style>
   <body class="body">
-    <div class="container-scroller">
-      <!-- partial:partials/_sidebar.html -->
-     @include('users.artisans.sidebar')
-      <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_navbar.html -->
-        @include('users.artisans.header')
-        <!-- partial -->
-        <div class="main-panel">
-            <div class="content-wrapper">
+    @include('users.artisans.loader')
+
+    @include('users.artisans.header')
+
+    @include('users.artisans.sidebar-right')
+
+    @include('users.artisans.sidebar-left')
+
+
+
+
+    <div class="main-container">
+        <div class="pd-20 card-box mb-30">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <h4 class="text-gray h4">List Of Orders</h4>
+
+                </div>
                 @if (session()->has('message'))
               <div class="alert alert-success">
                    <button  type="button"   class="close"   data-dismiss="alert" aria-hidden="true">x</button>
                 {{ session()->get('message') }}
               </div>
                 @endif
-            <div class="div_center">
-                <h2 class="h2_font">All Orders </h2>
-                <div>
-                    <form action="{{ url('search') }}" method="get">
-                        @csrf
-                        <input type="text" name="search" placeholder="Search..." />
-                        <input type="submit" value="Search" class="btn btn-outline-primary" />
-                    </form>
-
-               </div>
-
-               <table class="modern-table center">
+            </div>
+            <table class="data-table table stripe hover nowrap">
                 <thead>
                     <tr>
-                        <th>Order Number</th>
+                        <th class="table-plus datatable-nosort">Order Number</th>
                         <th>Customer Name</th>
                         <th>Ordered At</th>
                         <th>Total Amount</th>
-                        <th>Action</th>
+                        <th>Delivery statu</th>
+                        <th class="datatable-nosort">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                  @forelse($orders as $prod)
-                    <tr>
+                    @forelse($orders as $prod)
+                        <tr>
+                            <td class="table-plus">{{ $prod->id }}</td>
+                            <td>{{ $prod->name }}</td>
+                            <td>{{ $prod->created_at ->format('M d, Y')}}</td>
+                            <td>{{ $prod->price }}</td>
+                            <td>{{ $prod->delivery_status }}</td>
+                            <td>
+                                <button class="btn btn-success"  >
+                                    <a href="{{ url('/show_order', $prod->id) }}" style="color:white"><i class="dw dw-eye white" style="color:white" ></i> View</a>
 
-                      <td>{{ $prod->id }}</td>
-                      <td>{{ $prod->name }}</td>
-                      <td>{{ $prod->created_at ->format('M d, Y')}}</td>
-                      <td>{{ $prod->price }}</td>
-                      
-                      <td> <a class="btn btn-primary" href="{{ url('/show_order', $prod->id) }}">Show</a></td>
-
+                                </button>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                          <td colspan="16">Data Not Found</td>
+                        </tr>
+                      @endforelse
                     </tr>
-                  @empty
-                    <tr>
-                      <td colspan="16">Data Not Found</td>
-                    </tr>
-                  @endforelse
-
                 </tbody>
-              </table>
-
-
-
-
-            </div>
+            </table>
         </div>
-    <!-- container-scroller -->
-
-
+    </div>
 
     <!-- plugins:js -->
     @include('users.artisans.js')

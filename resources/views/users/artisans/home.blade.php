@@ -1,20 +1,44 @@
+<x-app-layout>
+
+
 <!DOCTYPE html>
-<html lang="en">
-  <head>
- @include('users.artisans.css')
-  </head>
-  <body>
-    <div class="container-scroller">
-      <!-- partial:partials/_sidebar.html -->
-     @include('users.artisans.sidebar')
-      <!-- partial -->
-      <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_navbar.html -->
-        @include('users.artisans.header')
-        <!-- partial -->
-        @include('users.artisans.body')
-    <!-- container-scroller -->
-    <!-- plugins:js -->
+<html>
+
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8" />
+    <title>Food Bar </title>
+    <base href="/public">
+    <!-- Site favicon -->
+    @include('users.artisans.sitefavicon')
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    @include('users.artisans.script')
+    <!-- End Google Tag Manager -->
+</head>
+
+<body>
+    @include('users.artisans.loader')
+
+    @include('users.artisans.header')
+
+    @include('users.artisans.sidebar-right')
+
+    @include('users.artisans.sidebar-left')
+
+    @include('users.artisans.main-container')
+    <!-- welcome modal start -->
+
+
+
+    <!-- welcome modal end -->
+    <!-- js -->
     @include('users.artisans.js')
-  </body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0"
+            style="display: none; visibility: hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+</body>
+
 </html>
+</x-app-layout>

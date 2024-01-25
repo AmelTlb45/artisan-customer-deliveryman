@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
                 Gate::define('isDeliveryman', function(User $user) {
                     return $user->role == 'deliveryman';
                 });
-
+              
 
     }
 }

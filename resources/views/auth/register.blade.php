@@ -84,14 +84,8 @@
         </div>
         <br>
         <!-- image -->
-        <div>
-            <x-input-label for="image" :value="__('Image')" />
-            <x-text-input id="image" class="block mt-1 w-full" type="file" name="image" :value="old('image')"
-                autofocus autocomplete="image" />
 
-            <x-input-error :messages="$errors->get('image')" class="mt-2" />
-        </div>
-        <br>
+       
 
         <!-- phone -->
         <div>
@@ -103,7 +97,29 @@
         <br>
 
 
+        <div>
+            <x-input-label for="Dispo" :value="__('Disponible')" />
 
+            <div class="mt-2">
+                <label for="Yes" class="inline-flex items-center">
+                    <input type="radio" id="Yes" name="Dispo" value="Yes"
+                        {{ old('Dispo') == 'Yes' ? 'checked' : '' }} required autofocus autocomplete="Dispo"
+                        class="form-radio">
+                    <span class="ml-2">{{ __('Yes') }}</span>
+                </label>
+            </div>
+
+            <div class="mt-2">
+                <label for="No" class="inline-flex items-center">
+                    <input type="radio" id="No" name="Dispo" value="No"
+                        {{ old('Dispo') == 'No' ? 'checked' : '' }} required autofocus autocomplete="Dispo"
+                        class="form-radio">
+                    <span class="ml-2">{{ __('No') }}</span>
+                </label>
+            </div>
+            <x-input-error :messages="$errors->get('Dispo')" class="mt-2" />
+        </div>
+        <br>
 
 
         <!-- Email Address -->
@@ -145,33 +161,7 @@
             </x-primary-button>
         </div>
         @push('scripts')
-        <script>
-            // JavaScript code goes here
-            // Récupérez le champ de sélection du rôle
-            var roleSelect = document.getElementById('role');
 
-            // Récupérez les champs spécifiques à chaque rôle
-            var artisanField = document.getElementById('artisan-field');
-            var consumerField = document.getElementById('consumer-field');
-            var deliveryField = document.getElementById('delivery-field');
-
-            // Écoutez les changements dans le champ de sélection du rôle
-            roleSelect.addEventListener('change', function () {
-                // Désactivez tous les champs spécifiques
-                artisanField.disabled = true;
-                consumerField.disabled = true;
-                deliveryField.disabled = true;
-
-                // Activez le champ spécifique au rôle sélectionné
-                if (roleSelect.value === 'artisan') {
-                    artisanField.disabled = false;
-                } else if (roleSelect.value === 'consumer') {
-                    consumerField.disabled = false;
-                } else if (roleSelect.value === 'deliveryman') {
-                    deliveryField.disabled = false;
-                }
-            });
-        </script>
     @endpush
     </form>
 </x-guest-layout>

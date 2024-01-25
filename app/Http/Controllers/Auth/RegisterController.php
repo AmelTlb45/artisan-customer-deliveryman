@@ -63,8 +63,9 @@ class RegisterController extends Controller
             'address' => ['nullable', 'string'],
             'Heur_Overture' => ['nullable', 'string'],
             'Heur_Fermetur' => ['nullable', 'string'],
+         
             'Description' => ['nullable', 'string'],
-            /*'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'gif', 'max:2048'],*/
+            'Dispo' => ['nullable', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
 
@@ -86,8 +87,9 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'Heur_Overture' => $data['Heur_Overture'],
             'Heur_Fermetur' => $data['Heur_Fermetur'],
+
             'Description' => $data['Description'],
-            /*'image' => $data['image'],*/
+            'Dispo' => $data['Dispo'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
