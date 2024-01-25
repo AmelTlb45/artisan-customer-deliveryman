@@ -64,7 +64,8 @@ class HomeController extends Controller
         }
         if ($role == 'deliveryman') {   //home + dashbord //ghi dashboard
             $product = Product::all();
-            return view('home.userpage', compact('product'));
+            $comment = Comment::orderby('id','desc')->get();
+            return view('home.userpage', compact('product','comment'));
         }
     }
 

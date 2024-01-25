@@ -316,7 +316,7 @@
         window.onbeforeunload = function(e) {
             localStorage.setItem('scrollpos', window.scrollY);
         };
-    </script> 
+    </script>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="home/js/jquery-3.2.1.min.js"></script>

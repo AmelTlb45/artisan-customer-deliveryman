@@ -51,7 +51,7 @@
                 <p class="preview-subject ellipsis mb-1"><a href="{{ url('') }}">Product</a></p>
               </div>
             </a>
-            
+
             <div class="dropdown-divider"></div>
             <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
@@ -166,7 +166,6 @@
             <div aria-labelledby="notificationDropdown">
                 <x-app-layout >
                 </x-app-layout>
-
             </div>
 
           </li>

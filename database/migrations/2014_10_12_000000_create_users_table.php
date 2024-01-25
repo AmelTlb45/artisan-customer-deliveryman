@@ -13,13 +13,22 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->enum('role',['artisan','customer','deliveryman']);
-
+            $table->string('name')->unique();
+            // ROLE
+            $table->enum('role', ['artisan', 'customer', 'deliveryman']);
+            //commun
+            $table->string('phone')->nullable(); // Use dedicated "phone" type or format constraint
+            $table->string('address')->nullable(); // Use text type for longer content
+            $table->string('image', 2048)->nullable();
+            //artisan and delivery only
+            $table->string('Heur_Overture')->nullable();
+            $table->string('Heur_Fermetur')->nullable();
+            $table->string('Description')->nullable();
+            //email
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-             // ROLE
+
 
             $table->rememberToken();
             $table->timestamps();

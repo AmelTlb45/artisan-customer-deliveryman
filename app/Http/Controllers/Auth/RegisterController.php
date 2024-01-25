@@ -53,6 +53,18 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'role' => ['required', Rule::in(['artisan', 'customer', 'deliveryman'])],
+            'phone' => [
+                'nullable',
+                'string',
+                'regex:/^\+?[0-9()-]*$/',
+                'min:10', // Adjust the minimum length as needed
+                'max:10', // Adjust the maximum length as needed
+            ],
+            'address' => ['nullable', 'string'],
+            'Heur_Overture' => ['nullable', 'string'],
+            'Heur_Fermetur' => ['nullable', 'string'],
+            'Description' => ['nullable', 'string'],
+            /*'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg', 'gif', 'max:2048'],*/
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
 
@@ -70,6 +82,12 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'role' => $data['role'],
+            'phone' => $data['phone'],
+            'address' => $data['address'],
+            'Heur_Overture' => $data['Heur_Overture'],
+            'Heur_Fermetur' => $data['Heur_Fermetur'],
+            'Description' => $data['Description'],
+            /*'image' => $data['image'],*/
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
