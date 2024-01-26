@@ -305,4 +305,7 @@ class HomeController extends Controller
 
         return view('home.artisan_profile', compact('artisan', 'product'));
     }
+
+
+
 }

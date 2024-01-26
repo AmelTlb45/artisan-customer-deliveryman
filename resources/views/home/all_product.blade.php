@@ -220,7 +220,7 @@
 
     <!--================ Comment and Replay System Starts Here =================-->
     <div class="comment-section">
-        <h2 class="comment">Comments</h2>
+        <h2 class="comment"> about the website</h2>
         <form action="{{url('add_comment')}}" method="POST">
             @csrf
             <textarea id="commentTextarea" name="comment" placeholder="Comment something here ..."></textarea>

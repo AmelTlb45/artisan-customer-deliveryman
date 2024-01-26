@@ -220,7 +220,7 @@
                 <h2>{{ $artisan->name }}</h2>
                 <p>Email: {{ $artisan->email }}</p>
                 <p>Phone: {{ $artisan->phone }}</p>
-            
+
                 <p>Heur_Overture: {{ $artisan->Heur_Overture }}</p>
                 <p>Heur_Fermetur: {{ $artisan->Heur_Fermetur }}</p>
                 <p>Description: {{ $artisan->Description }}</p>
@@ -252,6 +252,8 @@
 
             @endforeach
         </div>
+
+        
     </div>
     <script type="text/javascript">
      function reply(caller)
