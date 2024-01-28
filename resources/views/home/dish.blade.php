@@ -15,7 +15,7 @@
                 </div>
                 <form action="{{ url('product_search') }}" method="GET">
                     @csrf
-                 <input style="width: 500px;" type="text" name="search" placeholder="Search for Diche ...">
+                 <input style="width: 500px;" type="text" name="search" placeholder="Search for (product) ...">
                   <input type="submit" value="search">
                 </form>
             </div>
@@ -65,18 +65,71 @@
 
             @endforeach
              {{-- Display Artisan Profiles --}}
-             @foreach ($artisan as $artisa)
-             <div class="single_dish col-lg-4 col-md-6 text-center">
-                 <a href="{{ url('/artisan_profile', $artisa->id) }}">
-                     <div class="thumb">
-                         {{-- You may want to replace this with the artisan's profile image --}}
+             <div class="container">
+                <h3>Search Results</h3>
 
-                     </div>
-                     <h4>{{ $artisa->name }}</h4>
-                     {{-- Add other artisan details as needed --}}
-                 </a>
-             </div>
-         @endforeach
+                @if (isset($artisan) && count($artisan) > 0)
+                    <div class="row">
+                        @foreach ($artisan as $artisa)
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card h-100">
+                                    {{-- You may want to replace this with the artisan's profile image --}}
+
+                                    <div class="card-body">
+                                        <h4 class="card-title">{{ $artisa->name }}</h4>
+                                        {{-- Add other artisan details as needed --}}
+                                        <p class="card-text">Description or additional details</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="{{ url('/artisan_profile', $artisa->id) }}" class="btn btn-primary">View Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <!-- Pagination links for artisans -->
+                    <div class="pagination justify-content-center mt-4">
+                        {{ $artisan->links() }}
+                    </div>
+                @else
+                    <div class="alert alert-info mt-4">
+                        <p>No artisans found.</p>
+                    </div>
+                @endif
+
+
+                @if (isset($deliveryman) && count($deliveryman) > 0)
+                    <div class="row">
+                        @foreach ($deliveryman as $delivery)
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card h-100">
+                                    {{-- You may want to replace this with the artisan's profile image --}}
+
+                                    <div class="card-body">
+                                        <h4 class="card-title">{{ $delivery->name }}</h4>
+                                        {{-- Add other artisan details as needed --}}
+                                        <p class="card-text">Description or additional details</p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <a href="{{ url('/deliveryman_profile', $delivery->id) }}" class="btn btn-primary">View Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <!-- Pagination links for artisans -->
+                    <div class="pagination justify-content-center mt-4">
+                        {{ $deliveryman->links() }}
+                    </div>
+               
+                @endif
+
+                <!-- Other content in your container -->
+            </div>
+
+
         </div>
     </div>
 </section>

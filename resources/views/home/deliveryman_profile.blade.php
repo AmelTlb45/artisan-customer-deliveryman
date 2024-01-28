@@ -188,7 +188,6 @@
             }
         }
 
-
     </style>
 </head>
 
@@ -203,45 +202,34 @@
 
     <!--================ Comment and Replay System Starts Here =================-->
     <div class="container">
-        <h1>Artisan Profile</h1>
+        <h1>Deliveryman Profile</h1>
 
         <!-- Artisan Information Section -->
         <div class="row artisan-info">
             <div class="col-md-6">
-                <img src="artisan/vendors/images/t1.png" alt="{{ $artisan->name }}" class="img-fluid">
+                <img src="artisan/vendors/images/m1.png" alt="{{ $deliveryman->name }}" class="img-fluid">
             </div>
             <div class="col-md-6">
-                <h2>{{ $artisan->name }}</h2>
-                <p>Email: {{ $artisan->email }}</p>
-                <p>Phone: {{ $artisan->phone }}</p>
-                <p>Heur_Overture: {{ $artisan->Heur_Overture }}</p>
-                <p>Heur_Fermetur: {{ $artisan->Heur_Fermetur }}</p>
-                <p>Description: {{ $artisan->Description }}</p>
+                <h2>{{ $deliveryman->name }}</h2>
+                <p>Email: {{ $deliveryman->email }}</p>
+                <p>Phone: {{ $deliveryman->phone }}</p>
+
+                <p>Heur_Overture: {{ $deliveryman->Heur_Overture }}</p>
+                <p>Heur_Fermetur: {{ $deliveryman->Heur_Fermetur }}</p>
+                <p>Description: {{ $deliveryman->Description }}</p>
+                <p>Disponible Now ? {{ $deliveryman->Dispo }}</p>
                 <!-- Add any other artisan details you want to display -->
             </div>
+
+
         </div>
 
-        <!-- Products Section -->
-        <h3>Products by {{ $artisan->name }}</h3>
-        <div class="row">
-            @foreach ($product as $prod)
-                <div class="single_dish col-lg-4 col-md-6 text-center">
-                    <a href="{{ url('/product_details', $prod->id) }}">
-                        <div class="thumb">
-                            <img class="img-fluid" src="{{ asset($prod->image) }}" alt="{{ $prod->name_prod }}">
-                        </div>
-                        <h4>{{ $prod->name_prod }}</h4>
-                        <p>{{ $prod->description }}</p>
-                        <h5 class="price">{{ $prod->price }}.D.A</h5>
-                    </a>
-                </div>
-            @endforeach
-        </div>
+
 
         <!-- Comment Section -->
         <h3></h3>
         <div class="comment-section">
-            <h2 class="comment">Your Opinion about {{ $artisan->name }}</h2>
+            <h2 class="comment">Your Opinion about {{ $deliveryman->name }}</h2>
             <form action="{{ url('add_comment') }}" method="POST">
                 @csrf
                 <textarea id="commentTextarea" name="comment" placeholder="Comment something here ..."></textarea>
@@ -282,7 +270,6 @@
             </div>
         </div>
     </div>
-
     <script type="text/javascript">
      function reply(caller)
      {

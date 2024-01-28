@@ -19,6 +19,9 @@
 	<link rel="stylesheet" href="home/vendors/swiper/css/swiper.min.css">
 	<link rel="stylesheet" href="home/vendors/scroll/jquery.mCustomScrollbar.css">
 	<!-- main css -->
+    <!-- Add this to the head of your HTML file -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 	<link rel="stylesheet" href="home/css/style.css">
 	<link rel="stylesheet" href="home/css/responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">

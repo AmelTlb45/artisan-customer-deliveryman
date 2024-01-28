@@ -328,7 +328,8 @@ class ArtisanController extends Controller
     {
         $order = Order::find($orderId);
 
-        $deliveryman = User::where('role', '=', 'deliveryman')->where('Dispo', '=', 'Yes')->first();
+        $deliveryman = User::where('role', '=', 'deliveryman')->
+        where('Dispo', '=', 'Yes')->first();
 
         if (!$deliveryman) {
             // Handle the case where no available deliveryman is found
@@ -354,13 +355,7 @@ class ArtisanController extends Controller
 
 
     //rani dispo w maranich ndir ki nbghi CV rahdj
-    public function changeDispo(Request $request)
-    {
-        return $request;
-        $delivery = User::find($request->delivery_id);
-        $delivery->Dispo = $request->Dispo;
-        $delivery->save();
-    }
+
 
 
 

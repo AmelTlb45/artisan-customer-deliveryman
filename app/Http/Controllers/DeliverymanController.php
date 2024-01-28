@@ -31,4 +31,13 @@ class DeliverymanController extends Controller
         return redirect()->route('users.deliverymans.registeDeliverymans')->with('success', 'Artisan créé avec succès.');
     }
 
+    public function changeDispo(Request $request)
+    {
+            $delivery = User::find($request->user_id);
+            $delivery->Dispo = $request->dispo_value? 'Yes' : 'No';
+            $delivery->save();
+        return redirect()->back();
+ 
+    }
+
 }

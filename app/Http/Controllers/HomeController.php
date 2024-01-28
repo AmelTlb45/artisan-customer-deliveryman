@@ -11,7 +11,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-
+use App\Models\Rating;
 use Stripe;
 
 class HomeController extends Controller
@@ -38,6 +38,7 @@ class HomeController extends Controller
         $product = Product::all();
         $comment = Comment::all();
         $reply = Reply::all();
+
         return view('home.userpage', compact('product', 'comment', 'reply'));
     }
     public function redirect()
@@ -68,14 +69,35 @@ class HomeController extends Controller
             $product = Product::all();
             $comment = Comment::orderby('id', 'desc')->get();
             $orders = Order::all();
-            return view('users.deliverymans.home', compact('product', 'comment', 'orders'));
+            $user = Auth::user();
+            return view('users.deliverymans.home', compact('product', 'comment',
+             'orders','user'));
         }
     }
 
     public function product_details($id)
     {
+
+
+        $user =  Auth::user();
+        // Fetch ratings for the product
+        $ratings = Rating::where('prod_id', $id)->get();
+        // Calculate statistics
+        $totalRatings = count($ratings);
+        $averageRating = ($totalRatings > 0) ? $ratings->avg('rating') : 0;
+
+        // Count the number of ratings for each star
+        $fiveStarCount = $ratings->where('rating', 5)->count();
+        $fourStarCount = $ratings->where('rating', 4)->count();
+        $threeStarCount = $ratings->where('rating', 3)->count();
+        $twoStarCount = $ratings->where('rating', 2)->count();
+        $oneStarCount = $ratings->where('rating', 1)->count();
         $product = Product::find($id);
-        return view('home.product_details', compact('product'));
+        $comment = Comment::orderby('id', 'desc')->get();
+        $reply = Reply::all();
+        return view('home.product_details', compact('product','comment','reply','user',
+        'ratings','totalRatings','averageRating','fiveStarCount','fourStarCount',
+        'threeStarCount','twoStarCount','oneStarCount' ));
     }
 
     public function add_cart(Request $request, $id)
@@ -256,7 +278,9 @@ class HomeController extends Controller
         $artisan = User::where('role', '=', 'artisan')->where('name', 'LIKE', "%$search_text%")
             ->paginate(10);
 
-        return view('home.userpage', compact('product', 'reply', 'comment', 'artisan'));
+            $deliveryman = User::where('role', '=', 'deliveryman')->where('name', 'LIKE', "%$search_text%")
+            ->paginate(10);
+        return view('home.userpage', compact('product', 'reply', 'comment', 'artisan','deliveryman'));
     }
 
 
@@ -295,6 +319,8 @@ class HomeController extends Controller
 
     public function artisan_profile($id)
     {
+        $comment = Comment::orderby('id', 'desc')->get();
+        $reply = Reply::all();
         $artisan = User::find($id);
 
         if (!$artisan) {
@@ -303,8 +329,23 @@ class HomeController extends Controller
 
         $product = Product::where('user_id', $artisan->id)->paginate(10);
 
-        return view('home.artisan_profile', compact('artisan', 'product'));
+        return view('home.artisan_profile', compact('artisan', 'product' ,'reply', 'comment'));
     }
+
+
+    public function deliveryman_profile($id)
+    {
+
+        $comment = Comment::orderby('id', 'desc')->get();
+        $reply = Reply::all();
+        $deliveryman = User::find($id);
+
+        if (!$deliveryman) {
+            return redirect()->route('error.page');
+        }
+        return view('home.deliveryman_profile', compact('deliveryman', 'reply', 'comment'));
+    }
+
 
 
 

@@ -13,7 +13,27 @@
                     </h4>
                 </div>
             </div>
+            <form action="{{ url('change_dispo') }}" method="POST" id="dispo_form">
+                @csrf
+                <div class="form-check form-switch">
+                    <input type="hidden" value={{$user->id}} name="user_id" />
+                    <input class="form-check-input" type="checkbox" role="switch"
+                     id="deliveryDispo" name="dispo_value"
+                     {{$user->Dispo != null && $user->Dispo == 'Yes'?
+                        'checked' : ''}}
+                        onchange="document.getElementById('dispo_form').submit();">
+                    <label class="form-check-label"
+                    for="deliveryDispo">Disponibilité</label>
+                  </div>
+            </form>
+            
         </div>
+        
+
+
+
+
+
 
         <div class="card-box pb-10">
             <div class="h5 pd-20 mb-0">Recent Customers</div>

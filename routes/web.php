@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtisanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DeliverymanController;
 use App\Http\Controllers\Profile\AvatarController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Artisan;
@@ -64,7 +65,7 @@ Route::get('/dispo_mission/{orderId}',[ArtisanController::class,'dispo_mission']
 
 Route::get('/order_delivery',[ArtisanController::class,'order_delivery']);
 Route::get('/dispo',[ArtisanController::class,'dispo']);
-Route::get('/changeDispo',[ArtisanController::class,'changeDispo'])->name('changeDispo');
+Route::post('/change_dispo',[DeliverymanController::class,'changeDispo'])->name('change.dispo');
 
 //Category
 Route::get('/view_category',[ArtisanController::class,'view_category']);
@@ -89,6 +90,7 @@ Route::get('/search',[ArtisanController::class,'searchdata']);
 
 //HOME
 
+Route::get('/deliveryman_profile/{id}',[HomeController::class,'deliveryman_profile']);
 Route::get('/artisan_profile/{id}',[HomeController::class,'artisan_profile']);
 Route::get('/redirect',[HomeController::class,'redirect']);
 Route::get('/',[HomeController::class,'index']);
