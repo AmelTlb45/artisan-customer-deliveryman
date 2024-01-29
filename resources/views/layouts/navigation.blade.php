@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -17,35 +17,73 @@
 
             <!-- Settings Dropdown -->
             <div>
-                <x-dropdown align="center" >
-                    <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                            @if (Auth::check())
-                            <div>{{ Auth::user()->name }}</div>
-                        @else
-                            <div>User is not authenticated</div>
-                        @endif
+                <!-- Settings Dropdown -->
+<div>
+    <x-dropdown align="center" >
+        <x-slot name="trigger">
+            <style>
+                .custom-button {
+                    display: inline-block;
+                    padding: 10px 20px; /* Adjust padding for the button size */
+                    font-weight: bold;
+                    border: 2px solid #007bff;
+                    border-radius: 15px; /* Adjust border-radius for rounded corners */
+                    font-size: 16px; /* Adjust text size */
+                    background-color: #007bff;
+                    color: #fff;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                    text-decoration: none;
+                }
 
-                        </button>
-                    </x-slot>
 
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
+                .custom-button:hover {
+                    background-color: #0056b3;
+                }
+            </style>
+            <button class="custom-button" >
+                @if (Auth::check())
+                <a href="{{ url('/redirect') }}" style="color: white; font-weight: bold;">
+                    {{ Auth::user()->name }}
+                </a>
 
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
+                @else
+                    <div>User is not authenticated</div>
+                @endif
+            </button>
+        </x-slot>
 
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
+        <x-slot name="content">
+            <style>
+                .dark-dropdown-item {
+                    background-color: #333; /* Change this to your desired dark color */
+                    color: #fff; /* Change this to the desired text color */
+                }
+            </style>
+
+            <x-dropdown-link :href="url('/redirect')" class="dark-dropdown-item">
+                {{ __('Dashboard') }}
+            </x-dropdown-link>
+            <x-dropdown-link :href="url('/')" class="dark-dropdown-item">
+                {{ __('Home') }}
+            </x-dropdown-link>
+            <x-dropdown-link :href="route('profile.edit')" class="dark-dropdown-item">
+                {{ __('Profile') }}
+            </x-dropdown-link>
+
+            <!-- Authentication -->
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+
+                <x-dropdown-link :href="route('logout')" class="dark-dropdown-item"
+                        onclick="event.preventDefault(); this.closest('form').submit();">
+                    {{ __('Log Out') }}
+                </x-dropdown-link>
+            </form>
+        </x-slot>
+    </x-dropdown>
+</div>
+
             </div>
 
             <!-- Hamburger -->

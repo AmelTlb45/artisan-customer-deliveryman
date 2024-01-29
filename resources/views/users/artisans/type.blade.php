@@ -173,7 +173,7 @@
                         <td>{{ $type->category->name_category }}</td>
                         <td>
                             <a class="btn btn-danger"
-                                href="{{ url('/delete_type', $data->id) }}"
+                                href="{{ url('/delete_type', $type->id) }}"
                                 onclick="return confirm('Are you sure to delete this?')">Delete</a>
                         </td>
                     </tr>

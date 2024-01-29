@@ -1,9 +1,10 @@
+
 <section class="top_dish_area">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="main_title position-relative">
-                    <h1>Our Top Rated Dishes</h1>
+                    <h1>Our  Dishes</h1>
                     <hr>
                     <div class="round-planet planet">
                         <div class="round-planet planet2">
@@ -12,41 +13,58 @@
                         </div>
                     </div>
                 </div>
+                <form action="{{ url('product_search') }}" method="GET">
+                    @csrf
+                 <input style="width: 500px;" type="text" name="search" placeholder="Search for Diche ...">
+                  <input type="submit" value="search">
+                </form>
             </div>
         </div>
+        <style>
+            .row {
+                display: flex;
+                justify-content: space-around; /* Adjust as needed */
+                flex-wrap: wrap;
+            }
+
+            .single_dish {
+                width: 30%; /* Adjust as needed, this is an example */
+                margin: 10px; /* Adjust as needed */
+            }
+
+            .thumb img {
+                width: 50%; /* Make the images fill the container */
+                height: auto; /* Maintaicn aspect ratio */
+            }
+
+            input[type="text"] {
+                width: 500px;
+                padding: 10px; /* Adjust padding as needed */
+                border-radius: 10px; /* Set border-radius for rounded corners */
+                border: 1px solid #ced4da; /* Border color */
+            }
+
+        </style>
         <div class="row">
-            <div class="single_dish col-lg-4 col-md-6 text-center">
+            @foreach ($product as $prod)
+
+            <div class="single_dish col-lg-4 col-md-6 text-center" >
+              <a href="{{url('/product_details1',$prod->id)}}">
                 <div class="thumb">
-                    <img class="img-fluid" src="home/img/dish/d1.jpg" alt="">
+
+                    <img class="img-fluid" src="{{ asset($prod->image) }}" alt="{{ $prod->name_prod }}" >
+
                 </div>
-                <h4>Bread Fruit Cheese Sandwich</h4>
+                <h4>{{ $prod->name_prod }}</h4>
                 <p>
-                    Bread/Potato/Cheese
+                    {{ $prod->description }}
                 </p>
-                <h5 class="price">$5.59</h5>
+                <h5 class="price">  {{ $prod->price }}.D.A</h5>
+            </a>
             </div>
 
-            <div class="single_dish col-lg-4 col-md-6 text-center">
-                <div class="thumb">
-                    <img class="img-fluid" src="home/img/dish/d2.jpg" alt="">
-                </div>
-                <h4>Beef Cutlet with Spring Onion</h4>
-                <p>
-                    Bread/Potato/Cheese
-                </p>
-                <h5 class="price">$5.59</h5>
-            </div>
+            @endforeach
 
-            <div class="single_dish col-lg-4 col-md-6 text-center">
-                <div class="thumb">
-                    <img class="img-fluid" src="home/img/dish/d3.jpg" alt="">
-                </div>
-                <h4>Meat with sauce & Vegetables</h4>
-                <p>
-                    Bread/Potato/Cheese
-                </p>
-                <h5 class="price">$5.59</h5>
-            </div>
         </div>
     </div>
 </section>
