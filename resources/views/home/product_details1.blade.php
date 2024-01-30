@@ -65,6 +65,68 @@
             animatedDiv.style.opacity = 5; // Change l'opacité à 1 (visible) une fois que la page est chargée
         });
     </script>
+      <script>
+        function rate1() {
+            if(document.getElementById('star1').checked){
+                document.getElementById('s1').style.color = 'yellow';
+                document.getElementById('s2').style.color = '#ddd';
+                        document.getElementById('s3').style.color = '#ddd';
+                        document.getElementById('s4').style.color = '#ddd';
+                        document.getElementById('s5').style.color = '#ddd';
+            }
+                    }
+                    function rate2() {
+                        if(document.getElementById('star2').checked){
+                document.getElementById('s1').style.color = 'yellow';
+                document.getElementById('s2').style.color = 'yellow';
+                document.getElementById('s3').style.color = '#ddd';
+                        document.getElementById('s4').style.color = '#ddd';
+                        document.getElementById('s5').style.color = '#ddd';
+            }
+                    }
+                    function rate3() {
+                        if(document.getElementById('star3').checked){
+                document.getElementById('s1').style.color = 'yellow';
+                document.getElementById('s2').style.color = 'yellow';
+                document.getElementById('s3').style.color = 'yellow';
+                document.getElementById('s4').style.color = '#ddd';
+                        document.getElementById('s5').style.color = '#ddd';
+
+            }
+                    }
+                    function rate4() {
+                        if(document.getElementById('star4').checked){
+                        document.getElementById('s1').style.color = 'yellow';
+                        document.getElementById('s2').style.color = 'yellow';
+                        document.getElementById('s3').style.color = 'yellow';
+                        document.getElementById('s4').style.color = 'yellow';
+                        document.getElementById('s5').style.color = '#ddd';
+
+                        }
+                    }
+                    function rate5() {
+                        if(document.getElementById('star5').checked){
+
+                        document.getElementById('s1').style.color = 'yellow';
+                        document.getElementById('s2').style.color = 'yellow';
+                        document.getElementById('s3').style.color = 'yellow';
+                        document.getElementById('s4').style.color = 'yellow';
+                        document.getElementById('s5').style.color = 'yellow';
+                        }
+                    }
+
+        // $(document).ready(function () {
+        //     $('.rate input').click(function () {
+        //         // Désélectionner toutes les étoiles
+        //         $('.rate label').css('color', '#ddd');
+
+        //         // Sélectionner toutes les étoiles jusqu'à celle sur laquelle vous avez cliqué
+        //         $(this).prevAll('input').addBack().prevAll('label').css('color', 'yellow');
+        //     });
+
+
+       // });
+    </script>
     <!-- End Google Tag Manager -->
 </head>
 
@@ -1011,29 +1073,24 @@ $progressWidth = ($average != 0) ? ($oneStarCount / $count) * 100 : 0; @endphp
                                                             color: yellow; /* Change this to your desired hover color */
                                                         }
                                                     </style>
-                                                    <script>
-                                                        $(document).ready(function () {
-                                                            $('.rate input').click(function () {
-                                                                // Désélectionner toutes les étoiles
-                                                                $('.rate label').css('color', '#ddd');
 
-                                                                // Sélectionner toutes les étoiles jusqu'à celle sur laquelle vous avez cliqué
-                                                                $(this).prevAll('input').addBack().prevAll('label').css('color', 'yellow');
-                                                            });
-                                                        });
-                                                    </script>
 
                                                     <div class="rate">
-                                                        <input type="checkbox" id="star5" name="rating" value="5" />
-                                                        <label for="star5" title="5 stars">&#9733;</label>
-                                                        <input type="checkbox" id="star4" name="rating" value="4" />
-                                                        <label for="star4" title="4 stars">&#9733;</label>
-                                                        <input type="checkbox" id="star3" name="rating" value="3" />
-                                                        <label for="star3" title="3 stars">&#9733;</label>
-                                                        <input type="checkbox" id="star2" name="rating" value="2" />
-                                                        <label for="star2" title="2 stars">&#9733;</label>
-                                                        <input type="checkbox" id="star1" name="rating" value="1" />
-                                                        <label for="star1" title="1 star">&#9733;</label>
+                                                        <input type="radio" id="star5" name="rating" value="5"
+                                                        onclick="rate5()" />
+                                                        <label for="star5" title="5 stars" id="s5">&#9733;</label>
+                                                        <input type="radio" id="star4" name="rating" value="4"
+                                                        onclick="rate4()"  />
+                                                        <label for="star4" title="4 stars" id="s4">&#9733;</label>
+                                                        <input type="radio" id="star3" name="rating" value="3"
+                                                        onclick="rate3()" />
+                                                        <label for="star3" title="3 stars" id="s3">&#9733;</label>
+                                                        <input type="radio" id="star2" name="rating" value="2"
+                                                        onclick="rate2()" />
+                                                        <label for="star2" title="2 stars" id="s2">&#9733;</label>
+                                                        <input type="radio" id="star1" name="rating" value="1"
+                                                        onclick="rate1()"/>
+                                                        <label for="star1" title="1 star" id="s1">&#9733;</label>
                                                         <i class="fas fa-star-light mr-1 main_star"></i>
                                                     </div>
 
