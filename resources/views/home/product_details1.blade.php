@@ -34,6 +34,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2973766580778258"
         crossorigin="anonymous"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpilMquVdAyjUar5+76PCmY1" crossorigin="anonymous"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -957,13 +958,23 @@ $progressWidth = ($average != 0) ? ($oneStarCount / $count) * 100 : 0; @endphp
                                             <div class="span4" style="align-items: center; height: 10vh;">
 
                                                 <form action="{{ url('/add_rating') }}" method="POST" style="display: flex; align-items">
+                                                    <script>
+                                                        $(document).ready(function () {
+                                                            // Gérer le survol des étiquettes de type radio
+                                                            $('input[type="radio"]').hover(function () {
+                                                                $(this).closest('.rate').css('background-color', 'yellow');
+                                                            }, function () {
+                                                                $(this).closest('.rate').css('background-color', ''); // Réinitialiser la couleur de fond
+                                                            });
+                                                        });
+                                                    </script>
                                                     @csrf
                                                     <input type="hidden" value="{{$product->id}}" name="prod_id"/>
-                                                   <div> <div class="rate">
+                                                   {{-- <div> <div class="rate">
                                                         <input type="radio" id="star5" name="rating"
                                                             value="5" />
                                                         <label for="star5" title="text">5 stars</label>
-                                                        <input class="fas fa-star" type="radio" id="star4" name="rating"
+                                                        <input class="fas fa-star-light mr-1 main_star" type="radio" id="star4" name="rating"
                                                             value="4" />
                                                         <label for="star4" title="text">4 stars</label>
                                                         <input type="radio" id="star3" name="rating"
@@ -976,7 +987,56 @@ $progressWidth = ($average != 0) ? ($oneStarCount / $count) * 100 : 0; @endphp
                                                             value="1" />
                                                         <label for="star1" title="text">1 star</label>
 
+
+                                                    </div> --}}
+                                                    <style>
+                                                        .rate {
+                                                            display: inline-block;
+                                                        }
+
+                                                        .rate input {
+                                                            display: none;
+                                                        }
+
+                                                        .rate label {
+                                                            font-size: 30px;
+                                                            color: #ddd;
+                                                            cursor: pointer;
+                                                            transition: color 0.3s ease;
+                                                        }
+
+                                                        .rate input:checked + label,
+                                                        .rate label:hover,
+                                                        .rate label:hover ~ label {
+                                                            color: yellow; /* Change this to your desired hover color */
+                                                        }
+                                                    </style>
+                                                    <script>
+                                                        $(document).ready(function () {
+                                                            $('.rate input').click(function () {
+                                                                // Désélectionner toutes les étoiles
+                                                                $('.rate label').css('color', '#ddd');
+
+                                                                // Sélectionner toutes les étoiles jusqu'à celle sur laquelle vous avez cliqué
+                                                                $(this).prevAll('input').addBack().prevAll('label').css('color', 'yellow');
+                                                            });
+                                                        });
+                                                    </script>
+
+                                                    <div class="rate">
+                                                        <input type="checkbox" id="star5" name="rating" value="5" />
+                                                        <label for="star5" title="5 stars">&#9733;</label>
+                                                        <input type="checkbox" id="star4" name="rating" value="4" />
+                                                        <label for="star4" title="4 stars">&#9733;</label>
+                                                        <input type="checkbox" id="star3" name="rating" value="3" />
+                                                        <label for="star3" title="3 stars">&#9733;</label>
+                                                        <input type="checkbox" id="star2" name="rating" value="2" />
+                                                        <label for="star2" title="2 stars">&#9733;</label>
+                                                        <input type="checkbox" id="star1" name="rating" value="1" />
+                                                        <label for="star1" title="1 star">&#9733;</label>
+                                                        <i class="fas fa-star-light mr-1 main_star"></i>
                                                     </div>
+
                                                     <br>
                                                   <div>  <textarea name="review" style=" width:300px ; hieght:50px;"></textarea>
                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button style="width: 100px; height: 50px;"
