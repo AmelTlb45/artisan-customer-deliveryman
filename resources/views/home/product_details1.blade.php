@@ -912,7 +912,7 @@ $progressWidth = ($average != 0) ? ($fiveStarCount / $average) * 100 : 0; @endph
                                                             aria-valuemax="100" id="five_star_progress">
                                                         </div>
                                                     </div>
-
+                                                </div>
 
                                                     <div class="progress-label-left"><b>4</b> <i
                                                             class="fas fa-star text-warning">
@@ -920,17 +920,17 @@ $progressWidth = ($average != 0) ? ($fiveStarCount / $average) * 100 : 0; @endph
                                                                 style="color: #000000">({{ $fourStarCount }})</span>
                                                         </i></div>
                                                     <div class="progress-label-right">
-                                                    </div>
-                                                    <div class="progress">
+                                                      </div>
+                                                      <div class="progress">
 
                                                         <div class="progress-bar bg-warning" role="progressbar"
                                                             @php
-$progressWidth = ($average != 0) ? ($fiveStarCount / $average) * 100 : 0; @endphp
+$progressWidth = ($average != 0) ? ($fourStarCount / $average) * 100 : 0; @endphp
                                                             style="width: {{ $progressWidth }}%;"
                                                             aria-valuenow="{{ $progressWidth }}" aria-valuemin="0"
                                                             aria-valuemax="100" id="five_star_progress">
                                                         </div>
-                                                    </div>
+                                                      </div>
 
 
                                                     <div class="progress-label-left"><b>3</b> <i
@@ -943,7 +943,7 @@ $progressWidth = ($average != 0) ? ($fiveStarCount / $average) * 100 : 0; @endph
                                                     <div class="progress">
                                                         <div class="progress-bar bg-warning" role="progressbar"
                                                             @php
-$progressWidth = ($average != 0) ? ($fiveStarCount / $average) * 100 : 0; @endphp
+$progressWidth = ($average != 0) ? ($threeStarCount / $average) * 100 : 0; @endphp
                                                             style="width: {{ $progressWidth }}%;"
                                                             aria-valuenow="{{ $progressWidth }}" aria-valuemin="0"
                                                             aria-valuemax="100" id="five_star_progress">
@@ -953,7 +953,7 @@ $progressWidth = ($average != 0) ? ($fiveStarCount / $average) * 100 : 0; @endph
                                                     <p>
                                                     <div class="progress-label-left"><b>2</b> <i
                                                             class="fas fa-star text-warning"> <span
-                                                                id="total_one_star_review"
+                                                                id="total_tow_star_review"
                                                                 style="color: #000000">({{ $twoStarCount }})</span>
                                                         </i></div>
                                                     <div class="progress-label-right">
@@ -1007,9 +1007,9 @@ $progressWidth = ($average != 0) ? ($oneStarCount / $count) * 100 : 0; @endphp
                                                     </div>
 
 
-                                                </div>
 
-                                                </div>
+
+
                                             </div>
                                         </div>
 
@@ -1032,19 +1032,24 @@ $progressWidth = ($average != 0) ? ($oneStarCount / $count) * 100 : 0; @endphp
                                                     </script>
                                                     @csrf
                                                     <input type="hidden" value="{{$product->id}}" name="prod_id"/>
-                                                   {{-- <div> <div class="rate">
+                                                   <div>
+                                                    {{-- <div class="rate">
                                                         <input type="radio" id="star5" name="rating"
                                                             value="5" />
                                                         <label for="star5" title="text">5 stars</label>
-                                                        <input class="fas fa-star-light mr-1 main_star" type="radio" id="star4" name="rating"
+
+                                                        <input type="radio" id="star4" name="rating"
                                                             value="4" />
                                                         <label for="star4" title="text">4 stars</label>
+
                                                         <input type="radio" id="star3" name="rating"
                                                             value="3" />
                                                         <label for="star3" title="text">3 stars</label>
+
                                                         <input type="radio" id="star2" name="rating"
                                                             value="2" />
                                                         <label for="star2" title="text">2 stars</label>
+
                                                         <input type="radio" id="star1" name="rating"
                                                             value="1" />
                                                         <label for="star1" title="text">1 star</label>
@@ -1094,13 +1099,14 @@ $progressWidth = ($average != 0) ? ($oneStarCount / $count) * 100 : 0; @endphp
                                                         <i class="fas fa-star-light mr-1 main_star"></i>
                                                     </div>
 
+
                                                     <br>
                                                   <div>  <textarea name="review" style=" width:300px ; hieght:50px;"></textarea>
                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button style="width: 100px; height: 50px;"
                                                         class="btn btn-primary btn-block"
                                                         type="submit">comment</button>
                                                     </div>
-
+                                                   </div></div>
                                                    </form>
 
 

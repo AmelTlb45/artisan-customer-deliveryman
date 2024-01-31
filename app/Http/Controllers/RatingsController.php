@@ -13,7 +13,7 @@ class RatingsController extends Controller
 
     public function addRating(Request $request)
     {
-
+      
         if ($request->isMethod('post')) {
             $data = $request->all();
             $rating = new Rating();
@@ -36,7 +36,7 @@ class RatingsController extends Controller
                 $rating->user_id = Auth::user()->id;
                 $rating->prod_id = $data['prod_id'];
                 $rating->review = $data['review'];
-                $rating->rating = isset($data['rating']) ;
+                $rating->rating = $data['rating'] ;
                 $rating->status = 0;
                 $rating->save();
 
@@ -46,8 +46,8 @@ class RatingsController extends Controller
         }
 
     }
-   
-    
+
+
 
 }
 

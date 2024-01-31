@@ -1,3 +1,8 @@
+<style>
+    .footer-area{
+    background:rgb(254,203,105);
+}
+</style>
 <footer class="footer-area p_120">
     <div class="container">
         <div class="row">
@@ -6,10 +11,10 @@
                     <h6 class="footer_title">Top Products</h6>
                     <ul class="list">
                         <li>
-                            <a href="#">Managed Website</a>
+                            <a class="nav-link" href="{{ url('/') }}">Home</a>
                         </li>
                         <li>
-                            <a href="#">Manage Reputation</a>
+                            <a class="nav-link" href="contact.html">Cart</a>
                         </li>
                         <li>
                             <a href="#">Power Tools</a>
@@ -24,12 +29,7 @@
                 <div class="single-footer-widget tp_widgets">
                     <h6 class="footer_title">Quick Links</h6>
                     <ul class="list">
-                        <li>
-                            <a href="#">Jobs</a>
-                        </li>
-                        <li>
-                            <a href="#">Brand Assets</a>
-                        </li>
+                    
                         <li>
                             <a href="#">Investor Relations</a>
                         </li>
@@ -43,15 +43,7 @@
                 <div class="single-footer-widget tp_widgets">
                     <h6 class="footer_title">Features</h6>
                     <ul class="list">
-                        <li>
-                            <a href="#">Jobs</a>
-                        </li>
-                        <li>
-                            <a href="#">Brand Assets</a>
-                        </li>
-                        <li>
-                            <a href="#">Investor Relations</a>
-                        </li>
+
                         <li>
                             <a href="#">Terms of Service</a>
                         </li>
@@ -62,15 +54,7 @@
                 <div class="single-footer-widget tp_widgets">
                     <h6 class="footer_title">Resources</h6>
                     <ul class="list">
-                        <li>
-                            <a href="#">Guides</a>
-                        </li>
-                        <li>
-                            <a href="#">Research</a>
-                        </li>
-                        <li>
-                            <a href="#">Experts</a>
-                        </li>
+
                         <li>
                             <a href="#">Agencies</a>
                         </li>
@@ -99,25 +83,6 @@
                 </aside>
             </div>
         </div>
-        <div class="row footer-bottom d-flex justify-content-between align-items-center">
-            <p class="col-lg-8 col-md-8 footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-            <div class="col-lg-4 col-md-4 footer-social">
-                <a href="#">
-                    <i class="fa fa-facebook"></i>
-                </a>
-                <a href="#">
-                    <i class="fa fa-twitter"></i>
-                </a>
-                <a href="#">
-                    <i class="fa fa-dribbble"></i>
-                </a>
-                <a href="#">
-                    <i class="fa fa-behance"></i>
-                </a>
-            </div>
-        </div>
+
     </div>
 </footer>
