@@ -1223,6 +1223,8 @@ $progressWidth = ($average != 0) ? ($oneStarCount / $count) * 100 : 0; @endphp
             </div>
         </div>
 
+
+
         <!-- welcome modal end -->
         <!-- js -->
         <script src="template/vendors/scripts/core.js"></script>
@@ -1260,7 +1262,7 @@ $progressWidth = ($average != 0) ? ($oneStarCount / $count) * 100 : 0; @endphp
                 });
             });
         </script>
-
+ @include('home.footer')
 </body>
 
 </html>
