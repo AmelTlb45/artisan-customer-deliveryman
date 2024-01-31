@@ -295,6 +295,18 @@ class HomeController extends Controller
         return view('home.all_product',compact('product','reply','comment'));
 
     }
-
+    public function add_comment(Request $request)
+    {
+        if (Auth::id()) {
+            $comment = new Comment;
+            $comment->name = Auth::user()->name;
+            $comment->user_id = Auth::user()->id;
+            $comment->comment = $request->comment;
+            $comment->save();
+            return  redirect()->back();
+        } else {
+            return redirect('login');
+        }
+    }
 }
 

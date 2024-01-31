@@ -225,7 +225,7 @@
 	<!--================End Menu Area =================-->
 
     <!--================ Comment and Replay System Starts Here =================-->
-    <div class="comment-section">
+    {{-- <div class="comment-section">
         <h2 class="comment">Comments</h2>
         <form action="{{url('add_comment')}}" method="POST">
             @csrf
@@ -233,11 +233,67 @@
             <br>
            <input type="submit" class="btn btn-primarye" value="Comment">
         </form>
+    </div> --}}
+
+    <style>
+        .comment-section {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .comment-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .comment-form {
+            margin-bottom: 20px;
+        }
+
+        #commentTextarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        .comment-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+{{--
+<div class="col-lg-6 order-lg-2"> sdfghjklmùmljhgfd</div>
+<div class="col-lg-6 order-lg-1">
+<div> --}}
+    <div class="comment-section">
+
+        <h2>Comments</h2>
+        <form action="{{ url('add_comment') }}" method="POST" class="comment-form">
+            @csrf
+            <textarea id="commentTextarea" name="comment" placeholder="Comment something here ..."></textarea>
+            <br>
+            <input type="submit" class="comment-btn" value="Comment">
+        </form>
     </div>
+
 
     <div class="comment-section">
         <h2 class="comment">All Comments</h2>
-        <div>
+
+        <div >
             @foreach ( $comment as $comment )
             <div>
                 <strong>{{ $comment->name }}</strong>
@@ -258,6 +314,10 @@
             </div>
             @endforeach
         </div>
+
+
+
+
         <div style="display: none;" class="replyDiv">
             <form action="{{ url('add_reply') }}" method="Post">
                 @csrf
@@ -271,6 +331,7 @@
 
         </div>
     </div>
+</div>
     <script type="text/javascript">
      function reply(caller)
      {
@@ -316,7 +377,7 @@
         window.onbeforeunload = function(e) {
             localStorage.setItem('scrollpos', window.scrollY);
         };
-    </script> 
+    </script>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="home/js/jquery-3.2.1.min.js"></script>

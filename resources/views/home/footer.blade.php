@@ -37,7 +37,7 @@ background:url('template/src/images/2.png') no-repeat center center fixed;
             </div>
             <div class="col-lg-2  col-md-6 col-sm-6">
                 <div class="single-footer-widget tp_widgets">
-                    <a class="nav-link" href="contact.html">Cart</a>
+                 
                 </div>
             </div>
          </div>
